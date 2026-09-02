@@ -1,0 +1,10 @@
+{
+  "seq": 8,
+  "stage": "script_fallback_check",
+  "t+": 15.473,
+  "detail": "learner_text already in native script, no fallback needed",
+  "summary": {},
+  "data": {
+    "used_transliteration_fallback": false
+  }
+}

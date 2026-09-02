@@ -1,0 +1,20 @@
+{
+  "seq": 5,
+  "stage": "asr_transcribe_complete",
+  "t+": 15.473,
+  "detail": "backend=WhisperASR produced 112 chars in 15.473s",
+  "summary": {
+    "elapsed_seconds": 15.473,
+    "text_preview": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्...",
+    "text_len": 112
+  },
+  "data": {
+    "audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/20f05867-eaf1-4d9c-b703-704188acd4d6.weba",
+    "backend": "WhisperASR",
+    "lang": "sa",
+    "elapsed_seconds": 15.473,
+    "audio_file_size_bytes": 311848,
+    "transcribed_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्या ।ष्तितः पृथिव्या इव मानदण्डण ।",
+    "transcribed_text_len": 112
+  }
+}

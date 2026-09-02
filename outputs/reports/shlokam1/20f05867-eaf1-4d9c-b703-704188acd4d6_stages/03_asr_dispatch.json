@@ -1,0 +1,12 @@
+{
+  "seq": 3,
+  "stage": "asr_dispatch",
+  "t+": 0.0,
+  "detail": "sending /home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/20f05867-eaf1-4d9c-b703-704188acd4d6.weba to WhisperASR (lang=sa)",
+  "summary": {
+    "audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/20f05867-eaf1-4d9c-b703-704188acd4d6.weba",
+    "lang": "sa",
+    "backend": "WhisperASR"
+  },
+  "data": {}
+}

@@ -1,0 +1,25 @@
+{
+  "shlokam1": {"language": "Sanskrit", "script": "devanagari", "whisper_lang": "sa",
+               "teacher_audio": "sanskrit_shloka1.mp3", "learner_dir": "shlokam1_responses"},
+  "shlokam2": {"language": "Sanskrit", "script": "devanagari", "whisper_lang": "sa",
+               "teacher_audio": "sanskrit_shloka2.mp3", "learner_dir": "shlokam2_responses"},
+  "shlokam3": {"language": "Sanskrit", "script": "devanagari", "whisper_lang": "sa",
+               "teacher_audio": "sanskrit_shloka3.mp3", "learner_dir": "shlokam3_responses"},
+  "shlokam4": {"language": "Sanskrit", "script": "devanagari", "whisper_lang": "sa",
+               "teacher_audio": "sanskrit_shloka4.mp3", "learner_dir": "shlokam4_responses"},
+  "shlokam5": {"language": "Sanskrit", "script": "devanagari", "whisper_lang": "sa",
+               "teacher_audio": "sanskrit_shloka5.mp3", "learner_dir": "shlokam5_responses"},
+
+  "padyam1": {"language": "Telugu", "script": "telugu", "whisper_lang": "te",
+              "teacher_audio": "telugu_padyam1.mp3", "learner_dir": "padyam1_responses"},
+  "padyam2": {"language": "Telugu", "script": "telugu", "whisper_lang": "te",
+              "teacher_audio": "telugu_padyam2.mp3", "learner_dir": "padyam2_responses"},
+  "padyam3": {"language": "Telugu", "script": "telugu", "whisper_lang": "te",
+              "teacher_audio": "telugu_padyam3.mp3", "learner_dir": "padyam3_responses"},
+  "padyam4": {"language": "Telugu", "script": "telugu", "whisper_lang": "te",
+              "teacher_audio": "telugu_padyam4.mp3", "learner_dir": "padyam4_responses"},
+  "padyam5": {"language": "Telugu", "script": "telugu", "whisper_lang": "te",
+              "teacher_audio": "telugu_padyam5.mp3", "learner_dir": "padyam5_responses"},
+  "padyam6": {"language": "Telugu", "script": "telugu", "whisper_lang": "te",
+              "teacher_audio": "telugu_padyam6.mp3", "learner_dir": "padyam6_responses"}
+}

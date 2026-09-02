@@ -1,0 +1,18 @@
+{
+  "seq": 4,
+  "stage": "asr_preflight",
+  "t+": 0.0,
+  "detail": "audio file OK: /home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+  "summary": {
+    "file_size_bytes": 242627,
+    "lang": "sa",
+    "backend": "WhisperASR"
+  },
+  "data": {
+    "audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+    "file_size_bytes": 242627,
+    "lang": "sa",
+    "backend": "WhisperASR",
+    "initial_prompt": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥"
+  }
+}

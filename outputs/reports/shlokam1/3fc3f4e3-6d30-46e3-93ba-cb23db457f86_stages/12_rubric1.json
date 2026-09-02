@@ -1,0 +1,37 @@
+{
+  "seq": 12,
+  "stage": "rubric1",
+  "t+": 15.142,
+  "detail": "score=96.7",
+  "summary": {
+    "aspiration_errors": 0,
+    "conjunct_errors": 0,
+    "dvitva_errors": 0,
+    "other_substitutions": 2
+  },
+  "data": {
+    "score": 96.7,
+    "total_aksharas": 60,
+    "aspiration_errors": 0,
+    "conjunct_errors": 0,
+    "dvitva_errors": 0,
+    "other_substitutions": 2,
+    "errors": [
+      {
+        "type": "substitution",
+        "guru_akshara": "\n",
+        "learner_akshara": "।",
+        "note": "guru='\n' learner='।'"
+      },
+      {
+        "type": "substitution",
+        "guru_akshara": "॥",
+        "learner_akshara": "।",
+        "note": "guru='॥' learner='।'"
+      }
+    ],
+    "feedback": [
+      "Excellent syllable-level pronunciation -- all aksharas matched the guru's rendition."
+    ]
+  }
+}

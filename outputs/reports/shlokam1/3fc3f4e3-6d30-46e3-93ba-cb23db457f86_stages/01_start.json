@@ -1,0 +1,10 @@
+{
+  "seq": 1,
+  "stage": "start",
+  "t+": 0.0,
+  "detail": "sample_id=shlokam1__3fc3f4e3-6d30-46e3-93ba-cb23db457f86",
+  "summary": {
+    "mode": "audio+asr"
+  },
+  "data": {}
+}

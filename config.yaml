@@ -1,0 +1,16 @@
+rubric_weights:
+  rubric1: 0.5   # syllable pronunciation (aspiration / sanyukta / dvitva)
+  rubric2: 0.25  # anunasika (nasalisation)
+  rubric3: 0.25  # word splitting (pada-cheda)
+
+asr:
+  backend: whisper       # whisper | none (text-only / demo-text-dir mode)
+  whisper_model_size: small
+  # Per-item ASR language codes are read from data/reference_texts/metadata.json
+  # (Sanskrit shlokas -> "sa", Telugu padyams -> "te") -- not set globally here,
+  # since this dataset is bilingual.
+
+paths:
+  audio_root: audios_for_pronunciation_test   # audios_learners/, audios_teachers/, audios_text/
+  reference_texts: data/reference_texts       # guru texts (already extracted from audios_text.docx) + metadata.json
+  outputs: outputs/reports

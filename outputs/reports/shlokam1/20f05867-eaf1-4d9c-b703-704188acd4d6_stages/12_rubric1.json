@@ -1,0 +1,67 @@
+{
+  "seq": 12,
+  "stage": "rubric1",
+  "t+": 15.572,
+  "detail": "score=90.0",
+  "summary": {
+    "aspiration_errors": 0,
+    "conjunct_errors": 2,
+    "dvitva_errors": 0,
+    "other_substitutions": 3
+  },
+  "data": {
+    "score": 90.0,
+    "total_aksharas": 60,
+    "aspiration_errors": 0,
+    "conjunct_errors": 2,
+    "dvitva_errors": 0,
+    "other_substitutions": 3,
+    "errors": [
+      {
+        "type": "substitution",
+        "guru_akshara": "\n",
+        "learner_akshara": "।",
+        "note": "guru='\n' learner='।'"
+      },
+      {
+        "type": "substitution",
+        "guru_akshara": "ह्य",
+        "learner_akshara": "ह्या",
+        "note": "guru='ह्य' learner='ह्या'"
+      },
+      {
+        "type": "extra",
+        "guru_akshara": null,
+        "learner_akshara": "।",
+        "note": "learner added '।'"
+      },
+      {
+        "type": "conjunct_error",
+        "guru_akshara": "स्थि",
+        "learner_akshara": "ष्ति",
+        "note": "sanyukta akshara mismatch: guru='स्थि' learner='ष्ति'"
+      },
+      {
+        "type": "extra",
+        "guru_akshara": null,
+        "learner_akshara": "ण्ड",
+        "note": "learner added 'ण्ड'"
+      },
+      {
+        "type": "conjunct_error",
+        "guru_akshara": "ण्डः",
+        "learner_akshara": "ण",
+        "note": "sanyukta akshara mismatch: guru='ण्डः' learner='ण'"
+      },
+      {
+        "type": "substitution",
+        "guru_akshara": "॥",
+        "learner_akshara": "।",
+        "note": "guru='॥' learner='।'"
+      }
+    ],
+    "feedback": [
+      "2 sanyukta akshara(s) (conjuncts) were altered -- slow the cluster down and articulate every consonant in it distinctly."
+    ]
+  }
+}

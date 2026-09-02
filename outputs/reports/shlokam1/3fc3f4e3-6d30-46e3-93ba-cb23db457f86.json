@@ -1,0 +1,2796 @@
+{
+  "sample_id": "shlokam1__3fc3f4e3-6d30-46e3-93ba-cb23db457f86",
+  "rubric1": {
+    "name": "Syllable pronunciation (aspiration / sanyukta / dvitva)",
+    "score": 96.7,
+    "errors": [
+      {
+        "type": "substitution",
+        "guru_akshara": "\n",
+        "learner_akshara": "।",
+        "note": "guru='\n' learner='।'"
+      },
+      {
+        "type": "substitution",
+        "guru_akshara": "॥",
+        "learner_akshara": "।",
+        "note": "guru='॥' learner='।'"
+      }
+    ],
+    "feedback": [
+      "Excellent syllable-level pronunciation -- all aksharas matched the guru's rendition."
+    ]
+  },
+  "rubric2": {
+    "name": "Anunasika (nasalisation)",
+    "score": 100.0,
+    "errors": [],
+    "feedback": [
+      "Nasal (anunasika) sounds were rendered correctly throughout."
+    ]
+  },
+  "rubric3": {
+    "name": "Word splitting (pada-cheda)",
+    "score": 93.3,
+    "errors": [
+      {
+        "note": "Learner produced 1 fewer word-groups than the guru (14 vs 15) -- likely ran two or more words together without a pause (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | ।।पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ।)."
+      }
+    ],
+    "feedback": [
+      "Learner produced 1 fewer word-groups than the guru (14 vs 15) -- likely ran two or more words together without a pause (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | ।।पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ।)."
+    ]
+  },
+  "overall_score": 96.7,
+  "tune_note": "Tune/intonation is not graded (per guru's guidance) -- shown only as an optional appreciative note.",
+  "grade": "Excellent (उत्तम)",
+  "guru_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
+  "learner_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।",
+  "script": "devanagari",
+  "used_transliteration_fallback": false,
+  "learner_text_source": "asr",
+  "asr_backend": "WhisperASR",
+  "asr_audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+  "asr_audio_bytes": 242627,
+  "asr_elapsed_seconds": 15.047,
+  "alignment_preview": [
+    {
+      "guru": "अ",
+      "learner": "अ",
+      "tag": "match"
+    },
+    {
+      "guru": "स्त्यु",
+      "learner": "स्त्यु",
+      "tag": "match"
+    },
+    {
+      "guru": "त्त",
+      "learner": "त्त",
+      "tag": "match"
+    },
+    {
+      "guru": "र",
+      "learner": "र",
+      "tag": "match"
+    },
+    {
+      "guru": "स्यां",
+      "learner": "स्यां",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "दि",
+      "learner": "दि",
+      "tag": "match"
+    },
+    {
+      "guru": "शि",
+      "learner": "शि",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "दे",
+      "learner": "दे",
+      "tag": "match"
+    },
+    {
+      "guru": "व",
+      "learner": "व",
+      "tag": "match"
+    },
+    {
+      "guru": "ता",
+      "learner": "ता",
+      "tag": "match"
+    },
+    {
+      "guru": "त्मा",
+      "learner": "त्मा",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "हि",
+      "learner": "हि",
+      "tag": "match"
+    },
+    {
+      "guru": "मा",
+      "learner": "मा",
+      "tag": "match"
+    },
+    {
+      "guru": "ल",
+      "learner": "ल",
+      "tag": "match"
+    },
+    {
+      "guru": "यो",
+      "learner": "यो",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "ना",
+      "learner": "ना",
+      "tag": "match"
+    },
+    {
+      "guru": "म",
+      "learner": "म",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "न",
+      "learner": "न",
+      "tag": "match"
+    },
+    {
+      "guru": "गा",
+      "learner": "गा",
+      "tag": "match"
+    },
+    {
+      "guru": "धि",
+      "learner": "धि",
+      "tag": "match"
+    },
+    {
+      "guru": "रा",
+      "learner": "रा",
+      "tag": "match"
+    },
+    {
+      "guru": "जः",
+      "learner": "जः",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "।",
+      "learner": "।",
+      "tag": "match"
+    },
+    {
+      "guru": "\n",
+      "learner": "।",
+      "tag": "substitution"
+    },
+    {
+      "guru": "पू",
+      "learner": "पू",
+      "tag": "match"
+    },
+    {
+      "guru": "र्वा",
+      "learner": "र्वा",
+      "tag": "match"
+    },
+    {
+      "guru": "प",
+      "learner": "प",
+      "tag": "match"
+    },
+    {
+      "guru": "रौ",
+      "learner": "रौ",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "तो",
+      "learner": "तो",
+      "tag": "match"
+    },
+    {
+      "guru": "य",
+      "learner": "य",
+      "tag": "match"
+    },
+    {
+      "guru": "नि",
+      "learner": "नि",
+      "tag": "match"
+    },
+    {
+      "guru": "धी",
+      "learner": "धी",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "व",
+      "learner": "व",
+      "tag": "match"
+    },
+    {
+      "guru": "गा",
+      "learner": "गा",
+      "tag": "match"
+    },
+    {
+      "guru": "ह्य",
+      "learner": "ह्य",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "स्थि",
+      "learner": "स्थि",
+      "tag": "match"
+    },
+    {
+      "guru": "तः",
+      "learner": "तः",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "पृ",
+      "learner": "पृ",
+      "tag": "match"
+    },
+    {
+      "guru": "थि",
+      "learner": "थि",
+      "tag": "match"
+    },
+    {
+      "guru": "व्या",
+      "learner": "व्या",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "इ",
+      "learner": "इ",
+      "tag": "match"
+    },
+    {
+      "guru": "व",
+      "learner": "व",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "मा",
+      "learner": "मा",
+      "tag": "match"
+    },
+    {
+      "guru": "न",
+      "learner": "न",
+      "tag": "match"
+    },
+    {
+      "guru": "द",
+      "learner": "द",
+      "tag": "match"
+    },
+    {
+      "guru": "ण्डः",
+      "learner": "ण्डः",
+      "tag": "match"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match"
+    },
+    {
+      "guru": "॥",
+      "learner": "।",
+      "tag": "substitution"
+    }
+  ],
+  "pipeline_trace": [
+    {
+      "seq": 1,
+      "stage": "start",
+      "t+": 0.0,
+      "detail": "sample_id=shlokam1__3fc3f4e3-6d30-46e3-93ba-cb23db457f86",
+      "summary": {
+        "mode": "audio+asr"
+      },
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "stage": "guru_text_received",
+      "t+": 0.0,
+      "detail": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्...",
+      "summary": {
+        "length": 110
+      },
+      "data": {
+        "guru_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
+        "sample_id": "shlokam1__3fc3f4e3-6d30-46e3-93ba-cb23db457f86",
+        "mode": "audio+asr"
+      }
+    },
+    {
+      "seq": 3,
+      "stage": "asr_dispatch",
+      "t+": 0.0,
+      "detail": "sending /home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba to WhisperASR (lang=sa)",
+      "summary": {
+        "audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+        "lang": "sa",
+        "backend": "WhisperASR"
+      },
+      "data": {}
+    },
+    {
+      "seq": 4,
+      "stage": "asr_preflight",
+      "t+": 0.0,
+      "detail": "audio file OK: /home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+      "summary": {
+        "file_size_bytes": 242627,
+        "lang": "sa",
+        "backend": "WhisperASR"
+      },
+      "data": {
+        "audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+        "file_size_bytes": 242627,
+        "lang": "sa",
+        "backend": "WhisperASR",
+        "initial_prompt": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥"
+      }
+    },
+    {
+      "seq": 5,
+      "stage": "asr_transcribe_complete",
+      "t+": 15.047,
+      "detail": "backend=WhisperASR produced 110 chars in 15.047s",
+      "summary": {
+        "elapsed_seconds": 15.047,
+        "text_preview": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्...",
+        "text_len": 110
+      },
+      "data": {
+        "audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+        "backend": "WhisperASR",
+        "lang": "sa",
+        "elapsed_seconds": 15.047,
+        "audio_file_size_bytes": 242627,
+        "transcribed_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।",
+        "transcribed_text_len": 110
+      }
+    },
+    {
+      "seq": 6,
+      "stage": "normalize",
+      "t+": 15.047,
+      "detail": "NFC-normalized + stripped both texts",
+      "summary": {
+        "guru_len": 110,
+        "learner_len": 110
+      },
+      "data": {
+        "guru_text_before": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
+        "guru_text_after": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
+        "learner_text_before": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।",
+        "learner_text_after": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।"
+      }
+    },
+    {
+      "seq": 7,
+      "stage": "script_detect",
+      "t+": 15.047,
+      "detail": "guru_script=devanagari",
+      "summary": {},
+      "data": {
+        "guru_script": "devanagari",
+        "guru_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥"
+      }
+    },
+    {
+      "seq": 8,
+      "stage": "script_fallback_check",
+      "t+": 15.047,
+      "detail": "learner_text already in native script, no fallback needed",
+      "summary": {},
+      "data": {
+        "used_transliteration_fallback": false
+      }
+    },
+    {
+      "seq": 9,
+      "stage": "segmentation_guru_aksharas",
+      "t+": 15.049,
+      "detail": "guru text segmented into 60 aksharas",
+      "summary": {
+        "akshara_count": 60,
+        "preview": [
+          "अ",
+          "स्त्यु",
+          "त्त",
+          "र",
+          "स्यां",
+          " ",
+          "दि",
+          "शि"
+        ]
+      },
+      "data": {
+        "script": "devanagari",
+        "source_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
+        "akshara_count": 60,
+        "aksharas": [
+          {
+            "text": "अ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": true,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "स्त्यु",
+            "consonants": [
+              "स",
+              "त",
+              "य"
+            ],
+            "vowel_sign": "ु",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "त्त",
+            "consonants": [
+              "त",
+              "त"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "र",
+            "consonants": [
+              "र"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "स्यां",
+            "consonants": [
+              "स",
+              "य"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": true,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "दि",
+            "consonants": [
+              "द"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "शि",
+            "consonants": [
+              "श"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "दे",
+            "consonants": [
+              "द"
+            ],
+            "vowel_sign": "े",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व",
+            "consonants": [
+              "व"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ता",
+            "consonants": [
+              "त"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "त्मा",
+            "consonants": [
+              "त",
+              "म"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "हि",
+            "consonants": [
+              "ह"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "मा",
+            "consonants": [
+              "म"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ल",
+            "consonants": [
+              "ल"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "यो",
+            "consonants": [
+              "य"
+            ],
+            "vowel_sign": "ो",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ना",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "म",
+            "consonants": [
+              "म"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "न",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "गा",
+            "consonants": [
+              "ग"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "धि",
+            "consonants": [
+              "ध"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "रा",
+            "consonants": [
+              "र"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "जः",
+            "consonants": [
+              "ज"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": true,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "।",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "\n",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "पू",
+            "consonants": [
+              "प"
+            ],
+            "vowel_sign": "ू",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "र्वा",
+            "consonants": [
+              "र",
+              "व"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "प",
+            "consonants": [
+              "प"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "रौ",
+            "consonants": [
+              "र"
+            ],
+            "vowel_sign": "ौ",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "तो",
+            "consonants": [
+              "त"
+            ],
+            "vowel_sign": "ो",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "य",
+            "consonants": [
+              "य"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "नि",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "धी",
+            "consonants": [
+              "ध"
+            ],
+            "vowel_sign": "ी",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व",
+            "consonants": [
+              "व"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "गा",
+            "consonants": [
+              "ग"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ह्य",
+            "consonants": [
+              "ह",
+              "य"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "स्थि",
+            "consonants": [
+              "स",
+              "थ"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "तः",
+            "consonants": [
+              "त"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": true,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "पृ",
+            "consonants": [
+              "प"
+            ],
+            "vowel_sign": "ृ",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "थि",
+            "consonants": [
+              "थ"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व्या",
+            "consonants": [
+              "व",
+              "य"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "इ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": true,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व",
+            "consonants": [
+              "व"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "मा",
+            "consonants": [
+              "म"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "न",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "द",
+            "consonants": [
+              "द"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ण्डः",
+            "consonants": [
+              "ण",
+              "ड"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": true,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "॥",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          }
+        ]
+      }
+    },
+    {
+      "seq": 10,
+      "stage": "segmentation_learner_aksharas",
+      "t+": 15.049,
+      "detail": "learner text segmented into 60 aksharas",
+      "summary": {
+        "akshara_count": 60,
+        "preview": [
+          "अ",
+          "स्त्यु",
+          "त्त",
+          "र",
+          "स्यां",
+          " ",
+          "दि",
+          "शि"
+        ]
+      },
+      "data": {
+        "script": "devanagari",
+        "source_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।",
+        "akshara_count": 60,
+        "aksharas": [
+          {
+            "text": "अ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": true,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "स्त्यु",
+            "consonants": [
+              "स",
+              "त",
+              "य"
+            ],
+            "vowel_sign": "ु",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "त्त",
+            "consonants": [
+              "त",
+              "त"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "र",
+            "consonants": [
+              "र"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "स्यां",
+            "consonants": [
+              "स",
+              "य"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": true,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "दि",
+            "consonants": [
+              "द"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "शि",
+            "consonants": [
+              "श"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "दे",
+            "consonants": [
+              "द"
+            ],
+            "vowel_sign": "े",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व",
+            "consonants": [
+              "व"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ता",
+            "consonants": [
+              "त"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "त्मा",
+            "consonants": [
+              "त",
+              "म"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "हि",
+            "consonants": [
+              "ह"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "मा",
+            "consonants": [
+              "म"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ल",
+            "consonants": [
+              "ल"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "यो",
+            "consonants": [
+              "य"
+            ],
+            "vowel_sign": "ो",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ना",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "म",
+            "consonants": [
+              "म"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "न",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "गा",
+            "consonants": [
+              "ग"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "धि",
+            "consonants": [
+              "ध"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "रा",
+            "consonants": [
+              "र"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "जः",
+            "consonants": [
+              "ज"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": true,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "।",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "।",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "पू",
+            "consonants": [
+              "प"
+            ],
+            "vowel_sign": "ू",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "र्वा",
+            "consonants": [
+              "र",
+              "व"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "प",
+            "consonants": [
+              "प"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "रौ",
+            "consonants": [
+              "र"
+            ],
+            "vowel_sign": "ौ",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "तो",
+            "consonants": [
+              "त"
+            ],
+            "vowel_sign": "ो",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "य",
+            "consonants": [
+              "य"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "नि",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "धी",
+            "consonants": [
+              "ध"
+            ],
+            "vowel_sign": "ी",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व",
+            "consonants": [
+              "व"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "गा",
+            "consonants": [
+              "ग"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ह्य",
+            "consonants": [
+              "ह",
+              "य"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "स्थि",
+            "consonants": [
+              "स",
+              "थ"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "तः",
+            "consonants": [
+              "त"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": true,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "पृ",
+            "consonants": [
+              "प"
+            ],
+            "vowel_sign": "ृ",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "थि",
+            "consonants": [
+              "थ"
+            ],
+            "vowel_sign": "ि",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व्या",
+            "consonants": [
+              "व",
+              "य"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "इ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": true,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "व",
+            "consonants": [
+              "व"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "मा",
+            "consonants": [
+              "म"
+            ],
+            "vowel_sign": "ा",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "न",
+            "consonants": [
+              "न"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "द",
+            "consonants": [
+              "द"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "ण्डः",
+            "consonants": [
+              "ण",
+              "ड"
+            ],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": true,
+            "script": "devanagari"
+          },
+          {
+            "text": " ",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          },
+          {
+            "text": "।",
+            "consonants": [],
+            "vowel_sign": "",
+            "is_independent_vowel": false,
+            "anusvara": false,
+            "candrabindu": false,
+            "visarga": false,
+            "script": "devanagari"
+          }
+        ]
+      }
+    },
+    {
+      "seq": 11,
+      "stage": "alignment",
+      "t+": 15.142,
+      "detail": "60 aligned pairs",
+      "summary": {
+        "tag_counts": {
+          "match": 58,
+          "substitution": 2
+        }
+      },
+      "data": {
+        "alignment": [
+          {
+            "guru": "अ",
+            "learner": "अ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "स्त्यु",
+            "learner": "स्त्यु",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "त्त",
+            "learner": "त्त",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "र",
+            "learner": "र",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "स्यां",
+            "learner": "स्यां",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "दि",
+            "learner": "दि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "शि",
+            "learner": "शि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "दे",
+            "learner": "दे",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "व",
+            "learner": "व",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "ता",
+            "learner": "ता",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "त्मा",
+            "learner": "त्मा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "हि",
+            "learner": "हि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "मा",
+            "learner": "मा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "ल",
+            "learner": "ल",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "यो",
+            "learner": "यो",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "ना",
+            "learner": "ना",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "म",
+            "learner": "म",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "न",
+            "learner": "न",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "गा",
+            "learner": "गा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "धि",
+            "learner": "धि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "रा",
+            "learner": "रा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "जः",
+            "learner": "जः",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "।",
+            "learner": "।",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "\n",
+            "learner": "।",
+            "tag": "substitution",
+            "cost": 1.0,
+            "note": "guru='\n' learner='।'"
+          },
+          {
+            "guru": "पू",
+            "learner": "पू",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "र्वा",
+            "learner": "र्वा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "प",
+            "learner": "प",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "रौ",
+            "learner": "रौ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "तो",
+            "learner": "तो",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "य",
+            "learner": "य",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "नि",
+            "learner": "नि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "धी",
+            "learner": "धी",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "व",
+            "learner": "व",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "गा",
+            "learner": "गा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "ह्य",
+            "learner": "ह्य",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "स्थि",
+            "learner": "स्थि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "तः",
+            "learner": "तः",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "पृ",
+            "learner": "पृ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "थि",
+            "learner": "थि",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "व्या",
+            "learner": "व्या",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "इ",
+            "learner": "इ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "व",
+            "learner": "व",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "मा",
+            "learner": "मा",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "न",
+            "learner": "न",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "द",
+            "learner": "द",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "ण्डः",
+            "learner": "ण्डः",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": " ",
+            "learner": " ",
+            "tag": "match",
+            "cost": 0.0,
+            "note": ""
+          },
+          {
+            "guru": "॥",
+            "learner": "।",
+            "tag": "substitution",
+            "cost": 1.0,
+            "note": "guru='॥' learner='।'"
+          }
+        ],
+        "tag_counts": {
+          "match": 58,
+          "substitution": 2
+        }
+      }
+    },
+    {
+      "seq": 12,
+      "stage": "rubric1",
+      "t+": 15.142,
+      "detail": "score=96.7",
+      "summary": {
+        "aspiration_errors": 0,
+        "conjunct_errors": 0,
+        "dvitva_errors": 0,
+        "other_substitutions": 2
+      },
+      "data": {
+        "score": 96.7,
+        "total_aksharas": 60,
+        "aspiration_errors": 0,
+        "conjunct_errors": 0,
+        "dvitva_errors": 0,
+        "other_substitutions": 2,
+        "errors": [
+          {
+            "type": "substitution",
+            "guru_akshara": "\n",
+            "learner_akshara": "।",
+            "note": "guru='\n' learner='।'"
+          },
+          {
+            "type": "substitution",
+            "guru_akshara": "॥",
+            "learner_akshara": "।",
+            "note": "guru='॥' learner='।'"
+          }
+        ],
+        "feedback": [
+          "Excellent syllable-level pronunciation -- all aksharas matched the guru's rendition."
+        ]
+      }
+    },
+    {
+      "seq": 13,
+      "stage": "rubric2",
+      "t+": 15.142,
+      "detail": "score=100.0",
+      "summary": {
+        "errors": 0,
+        "total_anunasika_aksharas": 10
+      },
+      "data": {
+        "score": 100.0,
+        "total_anunasika_aksharas": 10,
+        "errors": [],
+        "feedback": [
+          "Nasal (anunasika) sounds were rendered correctly throughout."
+        ]
+      }
+    },
+    {
+      "seq": 14,
+      "stage": "rubric3",
+      "t+": 15.143,
+      "detail": "score=93.3",
+      "summary": {
+        "guru_word_count": 15,
+        "learner_word_count": 14
+      },
+      "data": {
+        "score": 93.3,
+        "guru_word_count": 15,
+        "learner_word_count": 14,
+        "boundary_errors": [
+          {
+            "note": "Learner produced 1 fewer word-groups than the guru (14 vs 15) -- likely ran two or more words together without a pause (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | ।।पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ।)."
+          }
+        ],
+        "feedback": [
+          "Learner produced 1 fewer word-groups than the guru (14 vs 15) -- likely ran two or more words together without a pause (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | ।।पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ।)."
+        ]
+      }
+    },
+    {
+      "seq": 15,
+      "stage": "done",
+      "t+": 15.143,
+      "detail": "overall_score=96.7 grade=Excellent (उत्तम)",
+      "summary": {},
+      "data": {
+        "final_report": {
+          "sample_id": "shlokam1__3fc3f4e3-6d30-46e3-93ba-cb23db457f86",
+          "rubric1": {
+            "name": "Syllable pronunciation (aspiration / sanyukta / dvitva)",
+            "score": 96.7,
+            "errors": [
+              {
+                "type": "substitution",
+                "guru_akshara": "\n",
+                "learner_akshara": "।",
+                "note": "guru='\n' learner='।'"
+              },
+              {
+                "type": "substitution",
+                "guru_akshara": "॥",
+                "learner_akshara": "।",
+                "note": "guru='॥' learner='।'"
+              }
+            ],
+            "feedback": [
+              "Excellent syllable-level pronunciation -- all aksharas matched the guru's rendition."
+            ]
+          },
+          "rubric2": {
+            "name": "Anunasika (nasalisation)",
+            "score": 100.0,
+            "errors": [],
+            "feedback": [
+              "Nasal (anunasika) sounds were rendered correctly throughout."
+            ]
+          },
+          "rubric3": {
+            "name": "Word splitting (pada-cheda)",
+            "score": 93.3,
+            "errors": [
+              {
+                "note": "Learner produced 1 fewer word-groups than the guru (14 vs 15) -- likely ran two or more words together without a pause (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | ।।पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ।)."
+              }
+            ],
+            "feedback": [
+              "Learner produced 1 fewer word-groups than the guru (14 vs 15) -- likely ran two or more words together without a pause (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | ।।पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ।)."
+            ]
+          },
+          "overall_score": 96.7,
+          "tune_note": "Tune/intonation is not graded (per guru's guidance) -- shown only as an optional appreciative note.",
+          "grade": "Excellent (उत्तम)",
+          "guru_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
+          "learner_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।।पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।",
+          "script": "devanagari",
+          "used_transliteration_fallback": false,
+          "learner_text_source": "asr",
+          "asr_backend": "WhisperASR",
+          "asr_audio_path": "/home/pranaydadi/Documents/ManaBhashaUchcharanaPariksha/scripts/../audios_for_pronunciation_test/audios_learners/shlokam1_responses/3fc3f4e3-6d30-46e3-93ba-cb23db457f86.weba",
+          "asr_audio_bytes": 242627,
+          "asr_elapsed_seconds": 15.047,
+          "alignment_preview": [
+            {
+              "guru": "अ",
+              "learner": "अ",
+              "tag": "match"
+            },
+            {
+              "guru": "स्त्यु",
+              "learner": "स्त्यु",
+              "tag": "match"
+            },
+            {
+              "guru": "त्त",
+              "learner": "त्त",
+              "tag": "match"
+            },
+            {
+              "guru": "र",
+              "learner": "र",
+              "tag": "match"
+            },
+            {
+              "guru": "स्यां",
+              "learner": "स्यां",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "दि",
+              "learner": "दि",
+              "tag": "match"
+            },
+            {
+              "guru": "शि",
+              "learner": "शि",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "दे",
+              "learner": "दे",
+              "tag": "match"
+            },
+            {
+              "guru": "व",
+              "learner": "व",
+              "tag": "match"
+            },
+            {
+              "guru": "ता",
+              "learner": "ता",
+              "tag": "match"
+            },
+            {
+              "guru": "त्मा",
+              "learner": "त्मा",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "हि",
+              "learner": "हि",
+              "tag": "match"
+            },
+            {
+              "guru": "मा",
+              "learner": "मा",
+              "tag": "match"
+            },
+            {
+              "guru": "ल",
+              "learner": "ल",
+              "tag": "match"
+            },
+            {
+              "guru": "यो",
+              "learner": "यो",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "ना",
+              "learner": "ना",
+              "tag": "match"
+            },
+            {
+              "guru": "म",
+              "learner": "म",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "न",
+              "learner": "न",
+              "tag": "match"
+            },
+            {
+              "guru": "गा",
+              "learner": "गा",
+              "tag": "match"
+            },
+            {
+              "guru": "धि",
+              "learner": "धि",
+              "tag": "match"
+            },
+            {
+              "guru": "रा",
+              "learner": "रा",
+              "tag": "match"
+            },
+            {
+              "guru": "जः",
+              "learner": "जः",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "।",
+              "learner": "।",
+              "tag": "match"
+            },
+            {
+              "guru": "\n",
+              "learner": "।",
+              "tag": "substitution"
+            },
+            {
+              "guru": "पू",
+              "learner": "पू",
+              "tag": "match"
+            },
+            {
+              "guru": "र्वा",
+              "learner": "र्वा",
+              "tag": "match"
+            },
+            {
+              "guru": "प",
+              "learner": "प",
+              "tag": "match"
+            },
+            {
+              "guru": "रौ",
+              "learner": "रौ",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "तो",
+              "learner": "तो",
+              "tag": "match"
+            },
+            {
+              "guru": "य",
+              "learner": "य",
+              "tag": "match"
+            },
+            {
+              "guru": "नि",
+              "learner": "नि",
+              "tag": "match"
+            },
+            {
+              "guru": "धी",
+              "learner": "धी",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "व",
+              "learner": "व",
+              "tag": "match"
+            },
+            {
+              "guru": "गा",
+              "learner": "गा",
+              "tag": "match"
+            },
+            {
+              "guru": "ह्य",
+              "learner": "ह्य",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "स्थि",
+              "learner": "स्थि",
+              "tag": "match"
+            },
+            {
+              "guru": "तः",
+              "learner": "तः",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "पृ",
+              "learner": "पृ",
+              "tag": "match"
+            },
+            {
+              "guru": "थि",
+              "learner": "थि",
+              "tag": "match"
+            },
+            {
+              "guru": "व्या",
+              "learner": "व्या",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "इ",
+              "learner": "इ",
+              "tag": "match"
+            },
+            {
+              "guru": "व",
+              "learner": "व",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "मा",
+              "learner": "मा",
+              "tag": "match"
+            },
+            {
+              "guru": "न",
+              "learner": "न",
+              "tag": "match"
+            },
+            {
+              "guru": "द",
+              "learner": "द",
+              "tag": "match"
+            },
+            {
+              "guru": "ण्डः",
+              "learner": "ण्डः",
+              "tag": "match"
+            },
+            {
+              "guru": " ",
+              "learner": " ",
+              "tag": "match"
+            },
+            {
+              "guru": "॥",
+              "learner": "।",
+              "tag": "substitution"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
