@@ -1,0 +1,36 @@
+{
+  "score": 40.0,
+  "errors": [
+    {
+      "guru_akshara": "स्यां",
+      "learner_akshara": "स्या",
+      "note": "nasalisation differs: guru='स्यां' learner='स्या'"
+    },
+    {
+      "guru_akshara": " ",
+      "learner_akshara": "म",
+      "note": "nasalisation differs: guru=' ' learner='म'"
+    },
+    {
+      "guru_akshara": " ",
+      "learner_akshara": "ना",
+      "note": "nasalisation differs: guru=' ' learner='ना'"
+    },
+    {
+      "guru_akshara": "न",
+      "learner_akshara": "का",
+      "note": "nasalisation differs: guru='न' learner='का'"
+    },
+    {
+      "guru_akshara": "मा",
+      "learner_akshara": "भा",
+      "note": "nasalisation differs: guru='मा' learner='भा'"
+    },
+    {
+      "guru_akshara": "ण्डः",
+      "learner_akshara": "न्दाः",
+      "note": "nasalisation differs: guru='ण्डः' learner='न्दाः'"
+    }
+  ],
+  "total_anunasika_aksharas": 10
+}

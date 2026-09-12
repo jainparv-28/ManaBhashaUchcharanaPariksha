@@ -1,11 +1,9 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Optional
-import sys, os
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.phonetics.akshara import Akshara
-from src.phonetics import features as F
+from ..phonetics.akshara import Akshara
+from ..phonetics import features as F
 
 
 @dataclass
@@ -20,6 +18,14 @@ class AlignedPair:
 def _classify_substitution(g: Akshara, l: Akshara) -> AlignedPair:
     if g.text == l.text:
         return AlignedPair(g, l, "match", 0.0)
+
+    # Whitespace-vs-whitespace: any run of whitespace (space, newline, tab)
+    # is phonetically and orthographically insignificant -- it's a word/line
+    # boundary marker, not an akshara the learner mispronounced. Guru texts
+    # are often typed with line breaks between padas while ASR output uses
+    # plain spaces, so this must never be scored as a substitution error.
+    if g.text.isspace() and l.text.isspace():
+        return AlignedPair(g, l, "match", 0.0, note="whitespace variant (ignored)")
 
     script = g.script or l.script or "devanagari"
 
@@ -55,21 +61,36 @@ def _classify_substitution(g: Akshara, l: Akshara) -> AlignedPair:
                         note=f"guru='{g.text}' learner='{l.text}'")
 
 
+def _del_cost(guru_akshara: Akshara) -> float:
+    # Deleting (i.e. the guru unit not appearing in the learner stream) a
+    # pure-whitespace akshara is free -- guru texts are often typed with
+    # line breaks between padas that simply don't exist as a "sound" the
+    # learner could omit.
+    return 0.0 if guru_akshara.text.isspace() else 1.0
+
+
+def _ins_cost(learner_akshara: Akshara) -> float:
+    # Same reasoning in the other direction: an extra whitespace unit in
+    # the learner stream (e.g. ASR inserting a plain space where the guru
+    # text had a newline) is free.
+    return 0.0 if learner_akshara.text.isspace() else 1.0
+
+
 def align_aksharas(guru: List[Akshara], learner: List[Akshara]) -> List[AlignedPair]:
     n, m = len(guru), len(learner)
     dp = [[0.0] * (m + 1) for _ in range(n + 1)]
     for i in range(1, n + 1):
-        dp[i][0] = dp[i - 1][0] + 1.0
+        dp[i][0] = dp[i - 1][0] + _del_cost(guru[i - 1])
     for j in range(1, m + 1):
-        dp[0][j] = dp[0][j - 1] + 1.0
+        dp[0][j] = dp[0][j - 1] + _ins_cost(learner[j - 1])
 
     sub_cache = {}
     for i in range(1, n + 1):
         for j in range(1, m + 1):
             pair = _classify_substitution(guru[i - 1], learner[j - 1])
             sub_cache[(i, j)] = pair
-            del_cost = dp[i - 1][j] + 1.0
-            ins_cost = dp[i][j - 1] + 1.0
+            del_cost = dp[i - 1][j] + _del_cost(guru[i - 1])
+            ins_cost = dp[i][j - 1] + _ins_cost(learner[j - 1])
             sub_cost = dp[i - 1][j - 1] + pair.cost
             dp[i][j] = min(del_cost, ins_cost, sub_cost)
 
@@ -79,13 +100,17 @@ def align_aksharas(guru: List[Akshara], learner: List[Akshara]) -> List[AlignedP
         if i > 0 and j > 0 and abs(dp[i][j] - (dp[i - 1][j - 1] + sub_cache[(i, j)].cost)) < 1e-9:
             path.append(sub_cache[(i, j)])
             i, j = i - 1, j - 1
-        elif i > 0 and abs(dp[i][j] - (dp[i - 1][j] + 1.0)) < 1e-9:
-            path.append(AlignedPair(guru[i - 1], None, "missing", 1.0,
-                                     note=f"guru='{guru[i - 1].text}' not pronounced"))
+        elif i > 0 and abs(dp[i][j] - (dp[i - 1][j] + _del_cost(guru[i - 1]))) < 1e-9:
+            dcost = _del_cost(guru[i - 1])
+            path.append(AlignedPair(guru[i - 1], None, "missing", dcost,
+                                     note=f"guru='{guru[i - 1].text}' not pronounced"
+                                     if dcost else "whitespace-only line break (ignored)"))
             i -= 1
         else:
-            path.append(AlignedPair(None, learner[j - 1], "extra", 1.0,
-                                     note=f"learner added '{learner[j - 1].text}'"))
+            icost = _ins_cost(learner[j - 1])
+            path.append(AlignedPair(None, learner[j - 1], "extra", icost,
+                                     note=f"learner added '{learner[j - 1].text}'"
+                                     if icost else "whitespace-only line break (ignored)"))
             j -= 1
     path.reverse()
     return path

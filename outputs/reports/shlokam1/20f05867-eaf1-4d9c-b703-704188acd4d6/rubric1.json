@@ -1,0 +1,165 @@
+{
+  "score": 64.8,
+  "errors": [
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "स्त्यु",
+      "learner_akshara": "स्चु",
+      "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चु'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "ता",
+      "learner_akshara": "धा",
+      "note": "guru='ता' learner='धा'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "हि",
+      "learner_akshara": ",",
+      "note": "guru='हि' learner=','"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "ल",
+      "learner_akshara": "ला",
+      "note": "guru='ल' learner='ला'"
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "धि",
+      "learner_akshara": "दि",
+      "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)"
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "जा",
+      "note": "learner added 'जा'"
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "हा",
+      "note": "learner added 'हा'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "जः",
+      "learner_akshara": ",",
+      "note": "guru='जः' learner=','"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "।",
+      "learner_akshara": "ॐ",
+      "note": "guru='।' learner='ॐ'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "रौ",
+      "learner_akshara": "र",
+      "note": "guru='रौ' learner='र'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "तो",
+      "learner_akshara": "व्थो",
+      "note": "sanyukta akshara mismatch: guru='तो' learner='व्थो'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "नि",
+      "learner_akshara": "ने",
+      "note": "guru='नि' learner='ने'"
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "धी",
+      "learner_akshara": "दी",
+      "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "व",
+      "learner_akshara": "वा",
+      "note": "guru='व' learner='वा'"
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "ह्या",
+      "note": "learner added 'ह्या'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "ह्य",
+      "learner_akshara": ",",
+      "note": "sanyukta akshara mismatch: guru='ह्य' learner=','"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "स्थि",
+      "learner_akshara": "ॐ",
+      "note": "sanyukta akshara mismatch: guru='स्थि' learner='ॐ'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "तः",
+      "learner_akshara": "चि",
+      "note": "guru='तः' learner='चि'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": " ",
+      "learner_akshara": "त",
+      "note": "guru=' ' learner='त'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "पृ",
+      "learner_akshara": "ष्प्र",
+      "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "थि",
+      "learner_akshara": "।",
+      "note": "guru='थि' learner='।'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "व्या",
+      "learner_akshara": "दि",
+      "note": "sanyukta akshara mismatch: guru='व्या' learner='दि'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": " ",
+      "learner_akshara": "व्या",
+      "note": "sanyukta akshara mismatch: guru=' ' learner='व्या'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "इ",
+      "learner_akshara": "ई",
+      "note": "guru='इ' learner='ई'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": " ",
+      "learner_akshara": "धा",
+      "note": "guru=' ' learner='धा'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "॥",
+      "learner_akshara": ".",
+      "note": "guru='॥' learner='.'"
+    }
+  ],
+  "aspiration_errors": 2,
+  "conjunct_errors": 7,
+  "dvitva_errors": 0,
+  "other_substitutions": 14
+}

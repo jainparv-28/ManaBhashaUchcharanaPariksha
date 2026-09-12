@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List
-from src.phonetics.akshara import Akshara, to_words
+from ..phonetics.akshara import Akshara, to_words
 
 
 def _word_text(word: List[Akshara]) -> str:

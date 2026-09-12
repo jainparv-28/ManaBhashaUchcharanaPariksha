@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
-from src.phonetics.scripts import PROFILES, profile_for
+from .scripts import PROFILES, profile_for
 
 
 def varga_of(consonant: str, script: str) -> Optional[str]:

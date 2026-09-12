@@ -12,9 +12,8 @@ def test_simple_word():
 
 
 def test_geminate():
-    # द्ध as one akshara (dvitva-like conjunct of द+ध)
     out = texts(segment_aksharas("बुद्धः"))
-    assert "द्ध" in "".join(out)  # conjunct captured
+    assert "द्ध" in "".join(out)
 
 
 def test_word_split():

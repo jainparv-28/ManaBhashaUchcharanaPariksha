@@ -1,3 +1,15 @@
+"""
+report_generator.py
+--------------------
+Turns a pipeline report dict into:
+  (a) a JSON file for LMS integration (full report, including `stages`)
+  (b) a human-readable Markdown report
+  (c) a SEPARATE per-stage JSON file (write_stages_json) for anyone who
+      wants to inspect/audit just one step of the workflow (ASR output,
+      normalization, segmentation, alignment, each rubric, final scoring)
+      without parsing the full report.
+"""
+
 from __future__ import annotations
 import json
 import os
@@ -7,6 +19,30 @@ def write_json(report: dict, out_path: str):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
+
+
+def write_stages_json(report: dict, out_path: str):
+    """Write just the stage-by-stage breakdown (report['stages']) to its
+    own JSON file, keyed by stage name, so each stage of the workflow --
+    asr, normalization, script_detection, segmentation, alignment,
+    rubric1, rubric2, rubric3, scoring -- can be inspected independently."""
+    stages = report.get("stages", {})
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump({"sample_id": report.get("sample_id"), "stages": stages}, f,
+                   ensure_ascii=False, indent=2)
+
+
+def write_per_stage_files(report: dict, out_dir: str, sample_id: str):
+    """Write ONE json file per stage, e.g. outputs/reports/<item>/<id>/asr.json,
+    .../normalization.json, etc. -- useful when different downstream tools
+    each only care about a single stage."""
+    stages = report.get("stages", {})
+    stage_dir = os.path.join(out_dir, sample_id)
+    os.makedirs(stage_dir, exist_ok=True)
+    for stage_name, stage_data in stages.items():
+        with open(os.path.join(stage_dir, f"{stage_name}.json"), "w", encoding="utf-8") as f:
+            json.dump(stage_data, f, ensure_ascii=False, indent=2)
 
 
 def to_markdown(report: dict) -> str:
@@ -20,6 +56,10 @@ def to_markdown(report: dict) -> str:
         lines.append("> ⚠️ **Note:** ASR returned romanized text for this recording; it was "
                       "auto-transliterated into native script before scoring. Treat this "
                       "report as lower-confidence -- see RUNNING.md troubleshooting.\n")
+    if report.get("asr_flagged"):
+        lines.append(f"> 🚩 **ASR quality flag:** {report.get('asr_flag_reason')} -- "
+                      f"please spot-check this recording manually rather than trusting the "
+                      f"score below at face value.\n")
 
     lines.append("## Akshara-by-akshara comparison\n")
     lines.append("| Guru | Learner | Result |")
@@ -49,42 +89,3 @@ def write_markdown(report: dict, out_path: str):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(to_markdown(report))
-
-
-def write_stage_files(report: dict, out_dir: str) -> list:
-    """Writes ONE JSON file per pipeline stage (guru text received, ASR
-    preflight, ASR transcribe, normalize, script detect, romanization
-    fallback check, segmentation, alignment, rubric1, rubric2, rubric3,
-    done) into out_dir/, plus a single 00_all_stages.json with the full
-    trace in one file. Requires report["pipeline_trace"] to be present,
-    i.e. the sample must have been run through pipeline.evaluate_sample()
-    (any verbose setting -- the full data is captured either way).
-
-    Returns the list of file paths written, in stage order.
-    """
-    trace = report.get("pipeline_trace")
-    if not trace:
-        raise ValueError(
-            "report has no 'pipeline_trace' -- re-run evaluate_sample() from "
-            "the current pipeline.py (write_stage_files needs the per-stage "
-            "trace that evaluate_sample() attaches to every report)."
-        )
-
-    os.makedirs(out_dir, exist_ok=True)
-    written = []
-
-    combined_path = os.path.join(out_dir, "00_all_stages.json")
-    with open(combined_path, "w", encoding="utf-8") as f:
-        json.dump(trace, f, ensure_ascii=False, indent=2)
-    written.append(combined_path)
-
-    for entry in trace:
-        seq = entry.get("seq", 0)
-        stage_name = entry.get("stage", "unknown").lower().replace(" ", "_")
-        fname = f"{seq:02d}_{stage_name}.json"
-        fpath = os.path.join(out_dir, fname)
-        with open(fpath, "w", encoding="utf-8") as f:
-            json.dump(entry, f, ensure_ascii=False, indent=2)
-        written.append(fpath)
-
-    return written

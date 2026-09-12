@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List
-from src.alignment.align import AlignedPair
+from ..alignment.align import AlignedPair
 
 
 @dataclass
@@ -22,7 +22,7 @@ class Rubric2Result:
 
 
 def evaluate(alignment: List[AlignedPair], guru_aksharas) -> Rubric2Result:
-    from src.phonetics import features as F
+    from ..phonetics import features as F
     r = Rubric2Result()
     r.total_anunasika_aksharas = sum(1 for a in guru_aksharas if F.extract_features(a).is_anunasika)
     for p in alignment:

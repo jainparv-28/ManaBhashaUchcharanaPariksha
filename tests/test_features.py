@@ -17,12 +17,11 @@ def test_aspiration_pair_telugu():
 def test_anunasika_detection_devanagari():
     aks = segment_aksharas("गङ्गा")
     feats = [F.extract_features(a) for a in aks]
-    assert feats[1].has_nasal_consonant is True  # ङ्गा contains nasal ङ
+    assert feats[1].has_nasal_consonant is True
     assert feats[1].is_anunasika is True
 
 
 def test_anunasika_detection_telugu():
-    # గంగ (Telugu "Ganga") -- akshara with anusvara ం
     aks = segment_aksharas("గంగ")
     feats = [F.extract_features(a) for a in aks]
     assert any(f.has_anusvara for f in feats)
@@ -30,14 +29,13 @@ def test_anunasika_detection_telugu():
 
 
 def test_geminate_vs_conjunct_devanagari():
-    cc = segment_aksharas("च्च")[0]  # geminate
-    ch = segment_aksharas("च्छ")[0]  # NOT geminate (different consonants)
+    cc = segment_aksharas("च्च")[0]
+    ch = segment_aksharas("च्छ")[0]
     assert F.extract_features(cc).is_geminate is True
     assert F.extract_features(ch).is_geminate is False
 
 
 def test_geminate_telugu():
-    # ద్ద (dda, geminate) vs ద్ధ (ddha, conjunct of ద+ధ, not geminate)
     dd = segment_aksharas("ద్ద")[0]
     ddh = segment_aksharas("ద్ధ")[0]
     assert F.extract_features(dd).is_geminate is True

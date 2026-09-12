@@ -1,0 +1,487 @@
+{
+  "pairs": [
+    {
+      "guru": "अ",
+      "learner": "अ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "स्त्यु",
+      "learner": "स्चि",
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चि'"
+    },
+    {
+      "guru": "त्त",
+      "learner": "त्त",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "र",
+      "learner": "र",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "स्यां",
+      "learner": "स्या",
+      "tag": "anunasika_error",
+      "cost": 0.4,
+      "note": "nasalisation differs: guru='स्यां' learner='स्या'"
+    },
+    {
+      "guru": " ",
+      "learner": "म",
+      "tag": "anunasika_error",
+      "cost": 0.4,
+      "note": "nasalisation differs: guru=' ' learner='म'"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "दि",
+      "learner": "दि",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "शि",
+      "learner": "सि",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='शि' learner='सि'"
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "दे",
+      "learner": "दे",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "व",
+      "learner": "व",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "ता",
+      "learner": "ता",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "त्मा",
+      "learner": "त्मा",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "हि",
+      "learner": "लि",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='हि' learner='लि'"
+    },
+    {
+      "guru": "मा",
+      "learner": "मा",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "ल",
+      "learner": "ले",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='ल' learner='ले'"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "यो",
+      "learner": "यो",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "ना",
+      "learner": "ना",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "म",
+      "learner": "म",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": " ",
+      "learner": "ना",
+      "tag": "anunasika_error",
+      "cost": 0.4,
+      "note": "nasalisation differs: guru=' ' learner='ना'"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "न",
+      "learner": "का",
+      "tag": "anunasika_error",
+      "cost": 0.4,
+      "note": "nasalisation differs: guru='न' learner='का'"
+    },
+    {
+      "guru": "गा",
+      "learner": " ",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='गा' learner=' '"
+    },
+    {
+      "guru": "धि",
+      "learner": "दि",
+      "tag": "aspiration_error",
+      "cost": 0.3,
+      "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)"
+    },
+    {
+      "guru": "रा",
+      "learner": "रा",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "जः",
+      "learner": "जा",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='जः' learner='जा'"
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "।",
+      "learner": ",",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='।' learner=','"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "पू",
+      "learner": "औ",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='पू' learner='औ'"
+    },
+    {
+      "guru": "र्वा",
+      "learner": "र्वा",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "प",
+      "learner": "प",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "रौ",
+      "learner": "रो",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='रौ' learner='रो'"
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "तो",
+      "learner": "थो",
+      "tag": "aspiration_error",
+      "cost": 0.3,
+      "note": "'त' rendered as 'थ' (alpaprana said as mahaprana)"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "य",
+      "learner": "य",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "नि",
+      "learner": "नि",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "धी",
+      "learner": "ति",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='धी' learner='ति'"
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "व",
+      "learner": "वा",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='व' learner='वा'"
+    },
+    {
+      "guru": "गा",
+      "learner": "खा",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='गा' learner='खा'"
+    },
+    {
+      "guru": "ह्य",
+      "learner": "फ्या",
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='ह्य' learner='फ्या'"
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "स्थि",
+      "learner": "स्ति",
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='स्थि' learner='स्ति'"
+    },
+    {
+      "guru": "तः",
+      "learner": "त",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='तः' learner='त'"
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "पृ",
+      "learner": "ष्प्र",
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "थि",
+      "learner": "दि",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='थि' learner='दि'"
+    },
+    {
+      "guru": "व्या",
+      "learner": "व्या",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": " ",
+      "learner": " ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "इ",
+      "learner": "इ",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "व",
+      "learner": "व",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "मा",
+      "learner": "भा",
+      "tag": "anunasika_error",
+      "cost": 0.4,
+      "note": "nasalisation differs: guru='मा' learner='भा'"
+    },
+    {
+      "guru": "न",
+      "learner": "न",
+      "tag": "match",
+      "cost": 0.0,
+      "note": ""
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "द",
+      "learner": "ध",
+      "tag": "aspiration_error",
+      "cost": 0.3,
+      "note": "'द' rendered as 'ध' (alpaprana said as mahaprana)"
+    },
+    {
+      "guru": "ण्डः",
+      "learner": "न्दाः",
+      "tag": "anunasika_error",
+      "cost": 0.4,
+      "note": "nasalisation differs: guru='ण्डः' learner='न्दाः'"
+    },
+    {
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "॥",
+      "learner": "।",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='॥' learner='।'"
+    }
+  ]
+}

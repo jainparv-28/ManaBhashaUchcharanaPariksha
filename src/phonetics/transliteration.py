@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Optional
 
-from src.phonetics.scripts import detect_script
+from .scripts import detect_script
 
 _SANSCRIPT_TARGETS = None
 

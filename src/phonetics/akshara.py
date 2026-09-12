@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List, Optional
 
-from src.phonetics.scripts import ScriptProfile, profile_for, detect_script
+from .scripts import ScriptProfile, profile_for, detect_script
 
 
 @dataclass

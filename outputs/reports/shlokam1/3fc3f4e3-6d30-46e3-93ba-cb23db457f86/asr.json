@@ -1,0 +1,15 @@
+{
+  "mode": "audio_transcribed",
+  "raw_learner_text": "अस्चित्तर स्याम दिसिदे वतात्मा लिमाले यो नामना का दिराजा, और्वा परोथो यनितिवाखाफ्या स्तितष्प्र दिव्या इवभान धन्दाः।",
+  "diagnostics": {
+    "model_size": null,
+    "language": "sa",
+    "prompt_used": "ॐ नमः शिवाय। गुरुभ्यो नमः। हरिः ॐ तत्सत्। शान्तिः शान्तिः शान्तिः॥",
+    "num_segments": 1,
+    "low_confidence": true,
+    "avg_logprob": -0.4501931450583718,
+    "no_speech_prob": 0.6996250748634338
+  },
+  "flagged": true,
+  "flag_reason": "ASR backend reported low confidence / possible prompt echo"
+}

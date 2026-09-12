@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List
-from src.alignment.align import AlignedPair
+from ..alignment.align import AlignedPair
 
 RELEVANT_TAGS = {"aspiration_error", "conjunct_error", "dvitva_error", "substitution"}
 
@@ -63,7 +63,8 @@ def evaluate(alignment: List[AlignedPair]) -> Rubric1Result:
             r.errors.append(_err(p))
         elif p.tag in ("missing", "extra"):
             penalty += p.cost
-            r.errors.append(_err(p))
+            if p.cost > 0:
+                r.errors.append(_err(p))
 
     denom = max(r.total_aksharas, 1)
     r.score = max(0.0, round(100.0 * (1 - penalty / denom), 1))

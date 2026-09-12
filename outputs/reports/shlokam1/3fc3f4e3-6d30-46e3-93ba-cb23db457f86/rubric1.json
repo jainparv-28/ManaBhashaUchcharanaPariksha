@@ -1,0 +1,135 @@
+{
+  "score": 71.8,
+  "errors": [
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "स्त्यु",
+      "learner_akshara": "स्चि",
+      "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चि'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "शि",
+      "learner_akshara": "सि",
+      "note": "guru='शि' learner='सि'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "हि",
+      "learner_akshara": "लि",
+      "note": "guru='हि' learner='लि'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "ल",
+      "learner_akshara": "ले",
+      "note": "guru='ल' learner='ले'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "गा",
+      "learner_akshara": " ",
+      "note": "guru='गा' learner=' '"
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "धि",
+      "learner_akshara": "दि",
+      "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "जः",
+      "learner_akshara": "जा",
+      "note": "guru='जः' learner='जा'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "।",
+      "learner_akshara": ",",
+      "note": "guru='।' learner=','"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "पू",
+      "learner_akshara": "औ",
+      "note": "guru='पू' learner='औ'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "रौ",
+      "learner_akshara": "रो",
+      "note": "guru='रौ' learner='रो'"
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "तो",
+      "learner_akshara": "थो",
+      "note": "'त' rendered as 'थ' (alpaprana said as mahaprana)"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "धी",
+      "learner_akshara": "ति",
+      "note": "guru='धी' learner='ति'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "व",
+      "learner_akshara": "वा",
+      "note": "guru='व' learner='वा'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "गा",
+      "learner_akshara": "खा",
+      "note": "guru='गा' learner='खा'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "ह्य",
+      "learner_akshara": "फ्या",
+      "note": "sanyukta akshara mismatch: guru='ह्य' learner='फ्या'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "स्थि",
+      "learner_akshara": "स्ति",
+      "note": "sanyukta akshara mismatch: guru='स्थि' learner='स्ति'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "तः",
+      "learner_akshara": "त",
+      "note": "guru='तः' learner='त'"
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "पृ",
+      "learner_akshara": "ष्प्र",
+      "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "थि",
+      "learner_akshara": "दि",
+      "note": "guru='थि' learner='दि'"
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "द",
+      "learner_akshara": "ध",
+      "note": "'द' rendered as 'ध' (alpaprana said as mahaprana)"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "॥",
+      "learner_akshara": "।",
+      "note": "guru='॥' learner='।'"
+    }
+  ],
+  "aspiration_errors": 3,
+  "conjunct_errors": 4,
+  "dvitva_errors": 0,
+  "other_substitutions": 14
+}

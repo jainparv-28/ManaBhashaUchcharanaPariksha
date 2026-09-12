@@ -1,0 +1,15 @@
+{
+  "mode": "audio_transcribed",
+  "raw_learner_text": "अस्चुत्तरस्याम् दिशिदेव धात्मा, ॐ लायो नाम नगादि राजाहा, ॐ पूर्वा परव्थो यने दीवा गाह्या, ॐ चितष्प्र। दिव्याई वमान दन्दंधा.",
+  "diagnostics": {
+    "model_size": null,
+    "language": "sa",
+    "prompt_used": "ॐ नमः शिवाय। गुरुभ्यो नमः। हरिः ॐ तत्सत्। शान्तिः शान्तिः शान्तिः॥",
+    "num_segments": 1,
+    "low_confidence": false,
+    "avg_logprob": -0.4739845275878906,
+    "no_speech_prob": 0.4455395042896271
+  },
+  "flagged": false,
+  "flag_reason": null
+}
