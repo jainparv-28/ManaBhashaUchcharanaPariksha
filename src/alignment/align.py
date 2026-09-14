@@ -27,6 +27,24 @@ def _classify_substitution(g: Akshara, l: Akshara) -> AlignedPair:
     if g.text.isspace() and l.text.isspace():
         return AlignedPair(g, l, "match", 0.0, note="whitespace variant (ignored)")
 
+    # Exactly ONE side is whitespace: the aligner is pairing a real akshara
+    # against a pause/word-boundary. This is never a genuine aspiration,
+    # anunasika, gemination, or conjunct mix-up -- it's really a deletion
+    # (guru akshara never pronounced) or an insertion (learner said
+    # something extra at what should have been a pause). Left unguarded,
+    # this used to fall through into the feature-based classifiers below,
+    # which produced nonsense like an "anunasika_error" between a space and
+    # a consonant, and it also broke time-interval reporting: a whitespace
+    # akshara has no word index (see phonetics.akshara.word_index_map), so
+    # these pairs always came back with start/end = null instead of being
+    # routed through the "missing" gap-fill logic in alignment/timing.py.
+    if g.text.isspace() != l.text.isspace():
+        if g.text.isspace():
+            return AlignedPair(None, l, "extra", 1.0,
+                                note=f"learner added '{l.text}' where the guru's text had a pause")
+        return AlignedPair(g, None, "missing", 1.0,
+                            note=f"guru='{g.text}' not pronounced (aligned to a pause in the transcript)")
+
     script = g.script or l.script or "devanagari"
 
     gf, lf = F.extract_features(g), F.extract_features(l)
@@ -39,11 +57,11 @@ def _classify_substitution(g: Akshara, l: Akshara) -> AlignedPair:
             return AlignedPair(g, l, "aspiration_error", 0.3,
                                 note=f"'{gc}' rendered as '{lc}' ({kind})")
 
-    if gf.is_anunasika != lf.is_anunasika or (
+    if g.vowel_sign == l.vowel_sign and (gf.is_anunasika != lf.is_anunasika or (
         gf.has_nasal_consonant and lf.has_nasal_consonant and
         g.consonants and l.consonants and
         set(c for c in g.consonants if F.is_nasal(c, script)) != set(c for c in l.consonants if F.is_nasal(c, script))
-    ):
+    )):
         return AlignedPair(g, l, "anunasika_error", 0.4,
                             note=f"nasalisation differs: guru='{g.text}' learner='{l.text}'")
 

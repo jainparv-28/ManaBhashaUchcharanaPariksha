@@ -69,6 +69,23 @@ def to_markdown(report: dict) -> str:
         lines.append(f"| {row['guru']} | {row['learner']} | {mark} |")
     lines.append("")
 
+    lines.append("## Error time intervals (learner audio)\n")
+    if not report.get("timing_available"):
+        lines.append("_Timing unavailable for this sample (text-only mode, or the ASR "
+                      "backend didn't return word timestamps)._\n")
+    elif not report.get("timed_errors"):
+        lines.append("_No errors -- nothing to time._\n")
+    else:
+        lines.append("| Type | Guru | Learner | Start | End | Note |")
+        lines.append("|---|---|---|---|---|---|")
+        for e in report["timed_errors"]:
+            start = f"{e['start']:.2f}s" if e["start"] is not None else "?"
+            end = f"{e['end']:.2f}s" if e["end"] is not None else "?"
+            approx = " (approx.)" if e.get("approximate") else ""
+            lines.append(f"| {e['type']} | {e['guru_akshara'] or '-'} | {e['learner_akshara'] or '-'} "
+                          f"| {start}{approx} | {end}{approx} | {e['note']} |")
+        lines.append("")
+
     for key in ("rubric1", "rubric2", "rubric3"):
         rb = report[key]
         lines.append(f"## {rb['name']} -- {rb['score']}/100\n")

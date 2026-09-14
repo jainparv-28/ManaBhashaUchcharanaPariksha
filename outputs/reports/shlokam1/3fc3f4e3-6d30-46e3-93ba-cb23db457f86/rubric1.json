@@ -1,11 +1,17 @@
 {
-  "score": 71.8,
+  "score": 67.7,
   "errors": [
     {
       "type": "conjunct_error",
       "guru_akshara": "स्त्यु",
       "learner_akshara": "स्चि",
       "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चि'"
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "म",
+      "note": "learner added 'म'"
     },
     {
       "type": "substitution",
@@ -27,9 +33,15 @@
     },
     {
       "type": "substitution",
+      "guru_akshara": "न",
+      "learner_akshara": "ना",
+      "note": "guru='न' learner='ना'"
+    },
+    {
+      "type": "substitution",
       "guru_akshara": "गा",
-      "learner_akshara": " ",
-      "note": "guru='गा' learner=' '"
+      "learner_akshara": "का",
+      "note": "guru='गा' learner='का'"
     },
     {
       "type": "aspiration_error",
@@ -122,6 +134,12 @@
       "note": "'द' rendered as 'ध' (alpaprana said as mahaprana)"
     },
     {
+      "type": "conjunct_error",
+      "guru_akshara": "ण्डः",
+      "learner_akshara": "न्दाः",
+      "note": "sanyukta akshara mismatch: guru='ण्डः' learner='न्दाः'"
+    },
+    {
       "type": "substitution",
       "guru_akshara": "॥",
       "learner_akshara": "।",
@@ -129,7 +147,7 @@
     }
   ],
   "aspiration_errors": 3,
-  "conjunct_errors": 4,
+  "conjunct_errors": 5,
   "dvitva_errors": 0,
-  "other_substitutions": 14
+  "other_substitutions": 15
 }

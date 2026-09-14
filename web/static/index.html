@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uchcharana Pariksha -- Pronunciation Check</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>उच्चारण परीक्षा <span class="subtitle">Pronunciation Check</span></h1>
+    <p class="tagline">Enter the correct text, upload the learner's recitation (and optionally the guru's), and see exactly where -- in seconds -- the pronunciation went wrong.</p>
+  </header>
+
+  <main>
+    <section class="panel" id="input-panel">
+      <h2>1. Input</h2>
+      <form id="eval-form">
+        <label for="guru_text">Correct / reference text</label>
+        <textarea id="guru_text" name="guru_text" rows="3"
+          placeholder="गङ्गा तटे बुद्धः अवसत् । (Devanagari for shlokas, Telugu script for padyams)"></textarea>
+
+        <div class="or-row"><span>or upload a .txt file</span></div>
+        <input type="file" id="guru_text_file" name="guru_text_file" accept=".txt">
+
+        <label for="lang">Script / language</label>
+        <select id="lang" name="lang">
+          <option value="sa">Sanskrit (Devanagari) -- shloka</option>
+          <option value="te">Telugu -- padyam</option>
+        </select>
+
+        <label for="learner_audio">Learner's audio (required)</label>
+        <input type="file" id="learner_audio" name="learner_audio" accept="audio/*,.weba,.webm,.mp3,.wav,.m4a,.ogg" required>
+
+        <label for="guru_audio">Guru's audio (optional, for side-by-side listening)</label>
+        <input type="file" id="guru_audio" name="guru_audio" accept="audio/*,.weba,.webm,.mp3,.wav,.m4a,.ogg">
+
+        <button type="submit" id="submit-btn">Evaluate pronunciation</button>
+      </form>
+      <div id="status" class="status" hidden></div>
+    </section>
+
+    <section class="panel" id="results-panel" hidden>
+      <h2>2. Results</h2>
+
+      <div id="flags"></div>
+
+      <div class="score-row">
+        <div class="score-card overall">
+          <div class="score-num" id="score-overall">--</div>
+          <div class="score-label" id="grade-label">Overall</div>
+        </div>
+        <div class="score-card">
+          <div class="score-num" id="score-r1">--</div>
+          <div class="score-label">Syllable (aspiration / sanyukta / dvitva)</div>
+        </div>
+        <div class="score-card">
+          <div class="score-num" id="score-r2">--</div>
+          <div class="score-label">Anunasika</div>
+        </div>
+        <div class="score-card">
+          <div class="score-num" id="score-r3">--</div>
+          <div class="score-label">Word splitting</div>
+        </div>
+      </div>
+
+      <h3>Learner's audio -- errors marked on the waveform</h3>
+      <div class="legend" id="legend"></div>
+      <div class="waveform-wrap">
+        <canvas id="learner-canvas" height="140"></canvas>
+        <div id="learner-tooltip" class="tooltip" hidden></div>
+      </div>
+      <audio id="learner-audio-el" controls></audio>
+      <p class="hint">Click anywhere on the waveform to seek. Colored bands mark where each error happens; hover for detail, click a band to jump &amp; play.</p>
+
+      <div id="guru-audio-section" hidden>
+        <h3>Guru's audio (reference)</h3>
+        <div class="waveform-wrap small">
+          <canvas id="guru-canvas" height="80"></canvas>
+        </div>
+        <audio id="guru-audio-el" controls></audio>
+      </div>
+
+      <h3>All errors (with timestamps)</h3>
+      <table id="error-table">
+        <thead>
+          <tr><th>Time</th><th>Type</th><th>Guru akshara</th><th>Learner akshara</th><th>Note</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

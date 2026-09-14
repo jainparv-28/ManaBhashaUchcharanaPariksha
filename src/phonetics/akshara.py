@@ -117,3 +117,24 @@ def to_words(aksharas: List[Akshara]) -> List[List[Akshara]]:
     if current:
         words.append(current)
     return words
+
+
+def word_index_map(aksharas: List[Akshara]) -> dict:
+    """Return {id(akshara): word_index} for every non-whitespace akshara,
+    where word_index is its 0-based position among whitespace-separated
+    words (the same grouping to_words() uses). Whitespace aksharas are not
+    included -- they don't belong to a word. Used to map an akshara-level
+    pronunciation error back to the ASR word (and therefore audio time
+    interval) it came from."""
+    mapping = {}
+    idx = -1
+    in_word = False
+    for a in aksharas:
+        if a.text.isspace():
+            in_word = False
+            continue
+        if not in_word:
+            idx += 1
+            in_word = True
+        mapping[id(a)] = idx
+    return mapping

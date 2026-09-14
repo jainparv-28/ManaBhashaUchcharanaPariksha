@@ -69,15 +69,33 @@ class WhisperASR(ASRBackend):
         # generic, non-content-specific script hint -- see module docstring.
         prompt = _SCRIPT_HINT_PROMPTS.get(lang)
 
-        kwargs = {
+        # Sanity-check the audio BEFORE handing it to Whisper: an empty,
+        # truncated, or extremely short/silent recording (e.g. the browser
+        # mic captured almost nothing) is what triggers Whisper's
+        # word-timestamp DTW step to crash with "cannot reshape tensor of
+        # 0 elements" deep inside torch, which is a confusing 500 error for
+        # an end user to see. Fail fast with a clear message instead.
+        try:
+            samples = self._whisper.audio.load_audio(audio_path)
+            duration_s = len(samples) / self._whisper.audio.SAMPLE_RATE
+        except Exception as e:
+            raise ValueError(f"Could not read audio file '{audio_path}': {e}") from e
+        if duration_s < 0.3:
+            raise ValueError(
+                f"This recording is only {duration_s:.2f}s long -- too short to "
+                f"transcribe reliably. Please record at least a few seconds of the "
+                f"recitation and try again."
+            )
+
+        base_kwargs = {
             "language": lang,
             "condition_on_previous_text": False,
             "temperature": (0.0, 0.2, 0.4, 0.6, 0.8, 1.0),
         }
         if prompt:
-            kwargs["initial_prompt"] = prompt
+            base_kwargs["initial_prompt"] = prompt
 
-        result = self.model.transcribe(audio_path, **kwargs)
+        result, had_word_timestamps = self._transcribe_with_fallback(audio_path, base_kwargs)
         text = (result.get("text") or "").strip()
 
         segments = result.get("segments") or []
@@ -85,6 +103,20 @@ class WhisperASR(ASRBackend):
                         if segments else None)
         no_speech_prob = (sum(s.get("no_speech_prob", 0.0) for s in segments) / len(segments)
                            if segments else None)
+
+        words = []
+        for seg in segments:
+            for w in seg.get("words", []) or []:
+                token = (w.get("word") or "").strip()
+                if not token:
+                    continue
+                words.append({
+                    "word": token,
+                    "start": round(float(w.get("start", 0.0)), 3),
+                    "end": round(float(w.get("end", 0.0)), 3),
+                    "probability": w.get("probability"),
+                })
+        duration = round(float(segments[-1]["end"]), 3) if segments else round(duration_s, 3)
 
         prompt_echo_suspected = False
         if prompt and text:
@@ -115,8 +147,38 @@ class WhisperASR(ASRBackend):
                 "prompt_used": prompt,
                 "num_segments": len(segments),
                 "low_confidence": low_confidence,
+                "word_timestamps_available": had_word_timestamps,
             },
+            words=words,
+            duration=duration,
         )
+
+    def _transcribe_with_fallback(self, audio_path: str, base_kwargs: dict):
+        """Try transcribing WITH word-level timestamps (needed for the
+        error-time-interval feature). If Whisper's DTW-based word alignment
+        crashes -- a known failure mode on very short/near-silent segments,
+        surfacing as "cannot reshape tensor of 0 elements" -- retry once
+        without word_timestamps so the user still gets a score, just
+        without per-word timing (src/alignment/timing.py already degrades
+        gracefully to duration-based estimates when no words are given).
+        Returns (result_dict, had_word_timestamps)."""
+        try:
+            return self.model.transcribe(audio_path, word_timestamps=True, **base_kwargs), True
+        except RuntimeError as e:
+            msg = str(e)
+            if "0 elements" in msg or "reshape tensor" in msg:
+                print(f"[warning] Whisper's word-level timestamp alignment failed on "
+                      f"'{audio_path}' (likely a very short or near-silent segment) -- "
+                      f"retrying without word-level timestamps.")
+                try:
+                    return self.model.transcribe(audio_path, word_timestamps=False, **base_kwargs), False
+                except RuntimeError as e2:
+                    raise RuntimeError(
+                        "Whisper could not transcribe this audio even without word "
+                        "timestamps -- the recording may be corrupted, empty, or entirely "
+                        "silent. Please check it and try again."
+                    ) from e2
+            raise
 
 
 def _normalized(s: str) -> str:

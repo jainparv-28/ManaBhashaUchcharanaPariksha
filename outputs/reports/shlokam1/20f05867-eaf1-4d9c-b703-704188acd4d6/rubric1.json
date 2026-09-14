@@ -1,11 +1,17 @@
 {
-  "score": 64.8,
+  "score": 60.2,
   "errors": [
     {
       "type": "conjunct_error",
       "guru_akshara": "स्त्यु",
       "learner_akshara": "स्चु",
       "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चु'"
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "म्",
+      "note": "learner added 'म्'"
     },
     {
       "type": "substitution",
@@ -18,6 +24,12 @@
       "guru_akshara": "हि",
       "learner_akshara": ",",
       "note": "guru='हि' learner=','"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "मा",
+      "learner_akshara": "ॐ",
+      "note": "guru='मा' learner='ॐ'"
     },
     {
       "type": "substitution",
@@ -92,52 +104,46 @@
       "note": "learner added 'ह्या'"
     },
     {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": ",",
+      "note": "learner added ','"
+    },
+    {
       "type": "conjunct_error",
       "guru_akshara": "ह्य",
-      "learner_akshara": ",",
-      "note": "sanyukta akshara mismatch: guru='ह्य' learner=','"
+      "learner_akshara": "ॐ",
+      "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'"
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "चि",
+      "note": "learner added 'चि' where the guru's text had a pause"
     },
     {
       "type": "conjunct_error",
       "guru_akshara": "स्थि",
-      "learner_akshara": "ॐ",
-      "note": "sanyukta akshara mismatch: guru='स्थि' learner='ॐ'"
-    },
-    {
-      "type": "substitution",
-      "guru_akshara": "तः",
-      "learner_akshara": "चि",
-      "note": "guru='तः' learner='चि'"
-    },
-    {
-      "type": "substitution",
-      "guru_akshara": " ",
       "learner_akshara": "त",
-      "note": "guru=' ' learner='त'"
+      "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'"
     },
     {
       "type": "conjunct_error",
-      "guru_akshara": "पृ",
+      "guru_akshara": "तः",
       "learner_akshara": "ष्प्र",
-      "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
+      "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'"
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "पृ",
+      "learner_akshara": "।",
+      "note": "guru='पृ' learner='।'"
     },
     {
       "type": "substitution",
       "guru_akshara": "थि",
-      "learner_akshara": "।",
-      "note": "guru='थि' learner='।'"
-    },
-    {
-      "type": "conjunct_error",
-      "guru_akshara": "व्या",
       "learner_akshara": "दि",
-      "note": "sanyukta akshara mismatch: guru='व्या' learner='दि'"
-    },
-    {
-      "type": "conjunct_error",
-      "guru_akshara": " ",
-      "learner_akshara": "व्या",
-      "note": "sanyukta akshara mismatch: guru=' ' learner='व्या'"
+      "note": "guru='थि' learner='दि'"
     },
     {
       "type": "substitution",
@@ -146,10 +152,10 @@
       "note": "guru='इ' learner='ई'"
     },
     {
-      "type": "substitution",
-      "guru_akshara": " ",
+      "type": "extra",
+      "guru_akshara": null,
       "learner_akshara": "धा",
-      "note": "guru=' ' learner='धा'"
+      "note": "learner added 'धा' where the guru's text had a pause"
     },
     {
       "type": "substitution",
@@ -159,7 +165,7 @@
     }
   ],
   "aspiration_errors": 2,
-  "conjunct_errors": 7,
+  "conjunct_errors": 5,
   "dvitva_errors": 0,
-  "other_substitutions": 14
+  "other_substitutions": 13
 }

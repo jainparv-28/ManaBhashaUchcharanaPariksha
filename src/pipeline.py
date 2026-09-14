@@ -38,6 +38,7 @@ from .phonetics.akshara import segment_aksharas
 from .phonetics.scripts import detect_script
 from .phonetics.transliteration import ensure_native_script
 from .alignment.align import align_aksharas
+from .alignment.timing import map_errors_to_time
 from .rubrics import rubric1_syllable_pronunciation as R1
 from .rubrics import rubric2_anunasika as R2
 from .rubrics import rubric3_word_splitting as R3
@@ -89,6 +90,8 @@ def evaluate_sample(sample_id: str, guru_text: str, learner_text: Optional[str] 
     asr_diagnostics = None
     asr_flagged = False
     asr_flag_reason = None
+    asr_words = []
+    asr_duration = None
 
     # ---- Stage 1: ASR (only if learner_text wasn't supplied directly) ----
     if learner_text is None:
@@ -104,6 +107,8 @@ def evaluate_sample(sample_id: str, guru_text: str, learner_text: Optional[str] 
             asr_diagnostics = result.diagnostics
             asr_diagnostics["avg_logprob"] = result.avg_logprob
             asr_diagnostics["no_speech_prob"] = result.no_speech_prob
+            asr_words = result.words or []
+            asr_duration = result.duration
             if result.prompt_echo_suspected:
                 asr_flagged = True
                 asr_flag_reason = "ASR backend reported low confidence / possible prompt echo"
@@ -114,6 +119,8 @@ def evaluate_sample(sample_id: str, guru_text: str, learner_text: Optional[str] 
         "mode": "text_supplied" if asr_diagnostics is None and learner_audio_path is None else "audio_transcribed",
         "raw_learner_text": learner_text,
         "diagnostics": asr_diagnostics,
+        "words": asr_words,
+        "duration": asr_duration,
         "flagged": asr_flagged,
         "flag_reason": asr_flag_reason,
     }
@@ -168,6 +175,15 @@ def evaluate_sample(sample_id: str, guru_text: str, learner_text: Optional[str] 
     ]
     stages["alignment"] = {"pairs": alignment_preview}
 
+    # ---- Stage 5b: map errors to audio time intervals ----
+    timing_result = map_errors_to_time(alignment, learner_aksharas, guru_aksharas,
+                                        asr_words=asr_words, duration=asr_duration)
+    if used_transliteration_fallback and timing_result["errors"]:
+        for e in timing_result["errors"]:
+            e["note"] = (e["note"] or "") + " (timing based on word position after " \
+                         "romanization fallback -- verify against audio)"
+    stages["timing"] = timing_result
+
     # ---- Stage 6: rubrics ----
     r1 = R1.evaluate(alignment)
     r2 = R2.evaluate(alignment, guru_aksharas)
@@ -192,6 +208,8 @@ def evaluate_sample(sample_id: str, guru_text: str, learner_text: Optional[str] 
     report_dict["used_transliteration_fallback"] = used_transliteration_fallback
     report_dict["asr_flagged"] = asr_flagged
     report_dict["asr_flag_reason"] = asr_flag_reason
+    report_dict["timing_available"] = timing_result["timing_available"]
+    report_dict["timed_errors"] = timing_result["errors"]
     if used_transliteration_fallback:
         print(f"[warning] {sample_id}: ASR output was romanized, not native script -- "
               f"transliterated automatically. Treat this report as lower-confidence and "

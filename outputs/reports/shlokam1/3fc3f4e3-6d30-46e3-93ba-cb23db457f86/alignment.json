@@ -43,18 +43,18 @@
       "note": "nasalisation differs: guru='स्यां' learner='स्या'"
     },
     {
-      "guru": " ",
+      "guru": "-",
       "learner": "म",
-      "tag": "anunasika_error",
-      "cost": 0.4,
-      "note": "nasalisation differs: guru=' ' learner='म'"
+      "tag": "extra",
+      "cost": 1.0,
+      "note": "learner added 'म'"
     },
     {
-      "guru": "-",
+      "guru": " ",
       "learner": " ",
-      "tag": "extra",
+      "tag": "match",
       "cost": 0.0,
-      "note": "whitespace-only line break (ignored)"
+      "note": ""
     },
     {
       "guru": "दि",
@@ -177,10 +177,17 @@
     },
     {
       "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "न",
       "learner": "ना",
-      "tag": "anunasika_error",
-      "cost": 0.4,
-      "note": "nasalisation differs: guru=' ' learner='ना'"
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='न' learner='ना'"
     },
     {
       "guru": "-",
@@ -190,18 +197,18 @@
       "note": "whitespace-only line break (ignored)"
     },
     {
-      "guru": "न",
-      "learner": "का",
-      "tag": "anunasika_error",
-      "cost": 0.4,
-      "note": "nasalisation differs: guru='न' learner='का'"
-    },
-    {
       "guru": "गा",
-      "learner": " ",
+      "learner": "का",
       "tag": "substitution",
       "cost": 1.0,
-      "note": "guru='गा' learner=' '"
+      "note": "guru='गा' learner='का'"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
     },
     {
       "guru": "धि",
@@ -465,9 +472,9 @@
     {
       "guru": "ण्डः",
       "learner": "न्दाः",
-      "tag": "anunasika_error",
-      "cost": 0.4,
-      "note": "nasalisation differs: guru='ण्डः' learner='न्दाः'"
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='ण्डः' learner='न्दाः'"
     },
     {
       "guru": " ",

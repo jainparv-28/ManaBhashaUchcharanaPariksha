@@ -10,6 +10,105 @@
     "avg_logprob": -0.4501931450583718,
     "no_speech_prob": 0.6996250748634338
   },
+  "words": [
+    {
+      "word": "अस्चित्तर",
+      "start": 2.22,
+      "end": 3.58,
+      "probability": 0.5460947411642834
+    },
+    {
+      "word": "स्याम",
+      "start": 3.58,
+      "end": 4.22,
+      "probability": 0.7171834707260132
+    },
+    {
+      "word": "दिसिदे",
+      "start": 4.22,
+      "end": 4.76,
+      "probability": 0.713287241756916
+    },
+    {
+      "word": "वतात्मा",
+      "start": 4.76,
+      "end": 5.7,
+      "probability": 0.797399178147316
+    },
+    {
+      "word": "लिमाले",
+      "start": 5.7,
+      "end": 6.52,
+      "probability": 0.6132135061281068
+    },
+    {
+      "word": "यो",
+      "start": 6.52,
+      "end": 6.7,
+      "probability": 0.8462463021278381
+    },
+    {
+      "word": "नामना",
+      "start": 6.7,
+      "end": 7.32,
+      "probability": 0.7747617761294047
+    },
+    {
+      "word": "का",
+      "start": 7.32,
+      "end": 7.52,
+      "probability": 0.6750255078077316
+    },
+    {
+      "word": "दिराजा,",
+      "start": 7.52,
+      "end": 8.16,
+      "probability": 0.738311305642128
+    },
+    {
+      "word": "और्वा",
+      "start": 8.52,
+      "end": 9.26,
+      "probability": 0.7496361349310193
+    },
+    {
+      "word": "परोथो",
+      "start": 9.26,
+      "end": 9.96,
+      "probability": 0.7209460458585194
+    },
+    {
+      "word": "यनितिवाखाफ्या",
+      "start": 9.96,
+      "end": 11.52,
+      "probability": 0.5786285891252405
+    },
+    {
+      "word": "स्तितष्प्र",
+      "start": 11.52,
+      "end": 12.26,
+      "probability": 0.7252510053416094
+    },
+    {
+      "word": "दिव्या",
+      "start": 12.26,
+      "end": 12.92,
+      "probability": 0.8155524767935276
+    },
+    {
+      "word": "इवभान",
+      "start": 12.92,
+      "end": 13.6,
+      "probability": 0.725725557655096
+    },
+    {
+      "word": "धन्दाः।",
+      "start": 13.6,
+      "end": 14.48,
+      "probability": 0.505032407966527
+    }
+  ],
+  "duration": 14.48,
   "flagged": true,
   "flag_reason": "ASR backend reported low confidence / possible prompt echo"
 }

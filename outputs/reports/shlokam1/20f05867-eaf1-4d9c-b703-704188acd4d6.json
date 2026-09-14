@@ -2,13 +2,19 @@
   "sample_id": "shlokam1__20f05867-eaf1-4d9c-b703-704188acd4d6",
   "rubric1": {
     "name": "Syllable pronunciation (aspiration / sanyukta / dvitva)",
-    "score": 64.8,
+    "score": 60.2,
     "errors": [
       {
         "type": "conjunct_error",
         "guru_akshara": "स्त्यु",
         "learner_akshara": "स्चु",
         "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चु'"
+      },
+      {
+        "type": "extra",
+        "guru_akshara": null,
+        "learner_akshara": "म्",
+        "note": "learner added 'म्'"
       },
       {
         "type": "substitution",
@@ -21,6 +27,12 @@
         "guru_akshara": "हि",
         "learner_akshara": ",",
         "note": "guru='हि' learner=','"
+      },
+      {
+        "type": "substitution",
+        "guru_akshara": "मा",
+        "learner_akshara": "ॐ",
+        "note": "guru='मा' learner='ॐ'"
       },
       {
         "type": "substitution",
@@ -95,52 +107,46 @@
         "note": "learner added 'ह्या'"
       },
       {
+        "type": "extra",
+        "guru_akshara": null,
+        "learner_akshara": ",",
+        "note": "learner added ','"
+      },
+      {
         "type": "conjunct_error",
         "guru_akshara": "ह्य",
-        "learner_akshara": ",",
-        "note": "sanyukta akshara mismatch: guru='ह्य' learner=','"
+        "learner_akshara": "ॐ",
+        "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'"
+      },
+      {
+        "type": "extra",
+        "guru_akshara": null,
+        "learner_akshara": "चि",
+        "note": "learner added 'चि' where the guru's text had a pause"
       },
       {
         "type": "conjunct_error",
         "guru_akshara": "स्थि",
-        "learner_akshara": "ॐ",
-        "note": "sanyukta akshara mismatch: guru='स्थि' learner='ॐ'"
-      },
-      {
-        "type": "substitution",
-        "guru_akshara": "तः",
-        "learner_akshara": "चि",
-        "note": "guru='तः' learner='चि'"
-      },
-      {
-        "type": "substitution",
-        "guru_akshara": " ",
         "learner_akshara": "त",
-        "note": "guru=' ' learner='त'"
+        "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'"
       },
       {
         "type": "conjunct_error",
-        "guru_akshara": "पृ",
+        "guru_akshara": "तः",
         "learner_akshara": "ष्प्र",
-        "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
+        "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'"
+      },
+      {
+        "type": "substitution",
+        "guru_akshara": "पृ",
+        "learner_akshara": "।",
+        "note": "guru='पृ' learner='।'"
       },
       {
         "type": "substitution",
         "guru_akshara": "थि",
-        "learner_akshara": "।",
-        "note": "guru='थि' learner='।'"
-      },
-      {
-        "type": "conjunct_error",
-        "guru_akshara": "व्या",
         "learner_akshara": "दि",
-        "note": "sanyukta akshara mismatch: guru='व्या' learner='दि'"
-      },
-      {
-        "type": "conjunct_error",
-        "guru_akshara": " ",
-        "learner_akshara": "व्या",
-        "note": "sanyukta akshara mismatch: guru=' ' learner='व्या'"
+        "note": "guru='थि' learner='दि'"
       },
       {
         "type": "substitution",
@@ -149,10 +155,10 @@
         "note": "guru='इ' learner='ई'"
       },
       {
-        "type": "substitution",
-        "guru_akshara": " ",
+        "type": "extra",
+        "guru_akshara": null,
         "learner_akshara": "धा",
-        "note": "guru=' ' learner='धा'"
+        "note": "learner added 'धा' where the guru's text had a pause"
       },
       {
         "type": "substitution",
@@ -163,27 +169,17 @@
     ],
     "feedback": [
       "2 akshara(s) had alpaprana/mahaprana (aspiration) confusion -- practice minimal pairs like त/थ, क/ख, प/फ with a hand in front of the mouth to feel the puff of air on mahaprana sounds.",
-      "7 sanyukta akshara(s) (conjuncts) were altered -- slow the cluster down and articulate every consonant in it distinctly."
+      "5 sanyukta akshara(s) (conjuncts) were altered -- slow the cluster down and articulate every consonant in it distinctly."
     ]
   },
   "rubric2": {
     "name": "Anunasika (nasalisation)",
-    "score": 60.0,
+    "score": 80.0,
     "errors": [
       {
         "guru_akshara": "स्यां",
         "learner_akshara": "स्या",
         "note": "nasalisation differs: guru='स्यां' learner='स्या'"
-      },
-      {
-        "guru_akshara": " ",
-        "learner_akshara": "म्",
-        "note": "nasalisation differs: guru=' ' learner='म्'"
-      },
-      {
-        "guru_akshara": "मा",
-        "learner_akshara": "ॐ",
-        "note": "nasalisation differs: guru='मा' learner='ॐ'"
       },
       {
         "guru_akshara": "ण्डः",
@@ -192,7 +188,7 @@
       }
     ],
     "feedback": [
-      "4 anunasika akshara(s) used the wrong nasal -- remember the nasal must match the place of articulation of the consonant that follows it (e.g. the 'ng' in गङ्गा is velar because ग is velar; saying गम्गा or गन्गा substitutes a labial/dental nasal instead)."
+      "2 anunasika akshara(s) used the wrong nasal -- remember the nasal must match the place of articulation of the consonant that follows it (e.g. the 'ng' in गङ्गा is velar because ग is velar; saying गम्गा or गन्गा substitutes a labial/dental nasal instead)."
     ]
   },
   "rubric3": {
@@ -207,7 +203,7 @@
       "Learner produced 4 extra word-groups compared to the guru (19 vs 15) -- likely paused mid-word (guru: अस्त्युत्तरस्यां | दिशि | देवतात्मा | हिमालयो | नाम | नगाधिराजः | । | पूर्वापरौ | तोयनिधी | वगाह्य | स्थितः | पृथिव्या | इव | मानदण्डः | ॥; learner: अस्चुत्तरस्याम् | दिशिदेव | धात्मा, | ॐ | लायो | नाम | नगादि | राजाहा, | ॐ | पूर्वा | परव्थो | यने | दीवा | गाह्या, | ॐ | चितष्प्र। | दिव्याई | वमान | दन्दंधा.)."
     ]
   },
-  "overall_score": 70.7,
+  "overall_score": 73.4,
   "tune_note": "Tune/intonation is not graded (per guru's guidance) -- shown only as an optional appreciative note.",
   "grade": "Needs practice (अभ्यासं करणीयम्)",
   "guru_text": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः । पूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ॥",
@@ -216,6 +212,270 @@
   "used_transliteration_fallback": false,
   "asr_flagged": false,
   "asr_flag_reason": null,
+  "timing_available": true,
+  "timed_errors": [
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "स्त्यु",
+      "learner_akshara": "स्चु",
+      "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चु'",
+      "start": 0.0,
+      "end": 2.8,
+      "approximate": false
+    },
+    {
+      "type": "anunasika_error",
+      "guru_akshara": "स्यां",
+      "learner_akshara": "स्या",
+      "note": "nasalisation differs: guru='स्यां' learner='स्या'",
+      "start": 0.0,
+      "end": 2.8,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "म्",
+      "note": "learner added 'म्'",
+      "start": 0.0,
+      "end": 2.8,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "ता",
+      "learner_akshara": "धा",
+      "note": "guru='ता' learner='धा'",
+      "start": 3.72,
+      "end": 4.84,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "हि",
+      "learner_akshara": ",",
+      "note": "guru='हि' learner=','",
+      "start": 3.72,
+      "end": 4.84,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "मा",
+      "learner_akshara": "ॐ",
+      "note": "guru='मा' learner='ॐ'",
+      "start": 5.4,
+      "end": 5.54,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "ल",
+      "learner_akshara": "ला",
+      "note": "guru='ल' learner='ला'",
+      "start": 5.54,
+      "end": 6.66,
+      "approximate": false
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "धि",
+      "learner_akshara": "दि",
+      "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)",
+      "start": 7.36,
+      "end": 8.48,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "जा",
+      "note": "learner added 'जा'",
+      "start": 8.48,
+      "end": 9.96,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "हा",
+      "note": "learner added 'हा'",
+      "start": 8.48,
+      "end": 9.96,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "जः",
+      "learner_akshara": ",",
+      "note": "guru='जः' learner=','",
+      "start": 8.48,
+      "end": 9.96,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "।",
+      "learner_akshara": "ॐ",
+      "note": "guru='।' learner='ॐ'",
+      "start": 10.18,
+      "end": 10.36,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "रौ",
+      "learner_akshara": "र",
+      "note": "guru='रौ' learner='र'",
+      "start": 11.1,
+      "end": 12.4,
+      "approximate": false
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "तो",
+      "learner_akshara": "व्थो",
+      "note": "sanyukta akshara mismatch: guru='तो' learner='व्थो'",
+      "start": 11.1,
+      "end": 12.4,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "नि",
+      "learner_akshara": "ने",
+      "note": "guru='नि' learner='ने'",
+      "start": 12.4,
+      "end": 13.1,
+      "approximate": false
+    },
+    {
+      "type": "aspiration_error",
+      "guru_akshara": "धी",
+      "learner_akshara": "दी",
+      "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)",
+      "start": 13.1,
+      "end": 13.82,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "व",
+      "learner_akshara": "वा",
+      "note": "guru='व' learner='वा'",
+      "start": 13.1,
+      "end": 13.82,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "ह्या",
+      "note": "learner added 'ह्या'",
+      "start": 13.82,
+      "end": 14.78,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": ",",
+      "note": "learner added ','",
+      "start": 13.82,
+      "end": 14.78,
+      "approximate": false
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "ह्य",
+      "learner_akshara": "ॐ",
+      "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'",
+      "start": 15.1,
+      "end": 15.38,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "चि",
+      "note": "learner added 'चि' where the guru's text had a pause",
+      "start": 15.38,
+      "end": 16.3,
+      "approximate": false
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "स्थि",
+      "learner_akshara": "त",
+      "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'",
+      "start": 15.38,
+      "end": 16.3,
+      "approximate": false
+    },
+    {
+      "type": "conjunct_error",
+      "guru_akshara": "तः",
+      "learner_akshara": "ष्प्र",
+      "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'",
+      "start": 15.38,
+      "end": 16.3,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "पृ",
+      "learner_akshara": "।",
+      "note": "guru='पृ' learner='।'",
+      "start": 15.38,
+      "end": 16.3,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "थि",
+      "learner_akshara": "दि",
+      "note": "guru='थि' learner='दि'",
+      "start": 16.3,
+      "end": 17.42,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "इ",
+      "learner_akshara": "ई",
+      "note": "guru='इ' learner='ई'",
+      "start": 16.3,
+      "end": 17.42,
+      "approximate": false
+    },
+    {
+      "type": "anunasika_error",
+      "guru_akshara": "ण्डः",
+      "learner_akshara": "न्दं",
+      "note": "nasalisation differs: guru='ण्डः' learner='न्दं'",
+      "start": 18.3,
+      "end": 19.4,
+      "approximate": false
+    },
+    {
+      "type": "extra",
+      "guru_akshara": null,
+      "learner_akshara": "धा",
+      "note": "learner added 'धा' where the guru's text had a pause",
+      "start": 18.3,
+      "end": 19.4,
+      "approximate": false
+    },
+    {
+      "type": "substitution",
+      "guru_akshara": "॥",
+      "learner_akshara": ".",
+      "note": "guru='॥' learner='.'",
+      "start": 18.3,
+      "end": 19.4,
+      "approximate": false
+    }
+  ],
   "alignment_preview": [
     {
       "guru": "अ",
@@ -253,18 +513,18 @@
       "note": "nasalisation differs: guru='स्यां' learner='स्या'"
     },
     {
-      "guru": " ",
+      "guru": "-",
       "learner": "म्",
-      "tag": "anunasika_error",
-      "cost": 0.4,
-      "note": "nasalisation differs: guru=' ' learner='म्'"
+      "tag": "extra",
+      "cost": 1.0,
+      "note": "learner added 'म्'"
     },
     {
-      "guru": "-",
+      "guru": " ",
       "learner": " ",
-      "tag": "extra",
+      "tag": "match",
       "cost": 0.0,
-      "note": "whitespace-only line break (ignored)"
+      "note": ""
     },
     {
       "guru": "दि",
@@ -346,9 +606,9 @@
     {
       "guru": "मा",
       "learner": "ॐ",
-      "tag": "anunasika_error",
-      "cost": 0.4,
-      "note": "nasalisation differs: guru='मा' learner='ॐ'"
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='मा' learner='ॐ'"
     },
     {
       "guru": "-",
@@ -596,81 +856,95 @@
       "note": "learner added 'ह्या'"
     },
     {
-      "guru": "ह्य",
+      "guru": "-",
       "learner": ",",
+      "tag": "extra",
+      "cost": 1.0,
+      "note": "learner added ','"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "ह्य",
+      "learner": "ॐ",
       "tag": "conjunct_error",
       "cost": 0.5,
-      "note": "sanyukta akshara mismatch: guru='ह्य' learner=','"
+      "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'"
+    },
+    {
+      "guru": "-",
+      "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "-",
+      "learner": "चि",
+      "tag": "extra",
+      "cost": 1.0,
+      "note": "learner added 'चि' where the guru's text had a pause"
+    },
+    {
+      "guru": "स्थि",
+      "learner": "त",
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'"
+    },
+    {
+      "guru": "तः",
+      "learner": "ष्प्र",
+      "tag": "conjunct_error",
+      "cost": 0.5,
+      "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'"
     },
     {
       "guru": " ",
+      "learner": "-",
+      "tag": "missing",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "पृ",
+      "learner": "।",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='पृ' learner='।'"
+    },
+    {
+      "guru": "-",
       "learner": " ",
+      "tag": "extra",
+      "cost": 0.0,
+      "note": "whitespace-only line break (ignored)"
+    },
+    {
+      "guru": "थि",
+      "learner": "दि",
+      "tag": "substitution",
+      "cost": 1.0,
+      "note": "guru='थि' learner='दि'"
+    },
+    {
+      "guru": "व्या",
+      "learner": "व्या",
       "tag": "match",
       "cost": 0.0,
       "note": ""
     },
     {
-      "guru": "स्थि",
-      "learner": "ॐ",
-      "tag": "conjunct_error",
-      "cost": 0.5,
-      "note": "sanyukta akshara mismatch: guru='स्थि' learner='ॐ'"
-    },
-    {
-      "guru": "-",
-      "learner": " ",
-      "tag": "extra",
+      "guru": " ",
+      "learner": "-",
+      "tag": "missing",
       "cost": 0.0,
       "note": "whitespace-only line break (ignored)"
-    },
-    {
-      "guru": "तः",
-      "learner": "चि",
-      "tag": "substitution",
-      "cost": 1.0,
-      "note": "guru='तः' learner='चि'"
-    },
-    {
-      "guru": " ",
-      "learner": "त",
-      "tag": "substitution",
-      "cost": 1.0,
-      "note": "guru=' ' learner='त'"
-    },
-    {
-      "guru": "पृ",
-      "learner": "ष्प्र",
-      "tag": "conjunct_error",
-      "cost": 0.5,
-      "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
-    },
-    {
-      "guru": "थि",
-      "learner": "।",
-      "tag": "substitution",
-      "cost": 1.0,
-      "note": "guru='थि' learner='।'"
-    },
-    {
-      "guru": "-",
-      "learner": " ",
-      "tag": "extra",
-      "cost": 0.0,
-      "note": "whitespace-only line break (ignored)"
-    },
-    {
-      "guru": "व्या",
-      "learner": "दि",
-      "tag": "conjunct_error",
-      "cost": 0.5,
-      "note": "sanyukta akshara mismatch: guru='व्या' learner='दि'"
-    },
-    {
-      "guru": " ",
-      "learner": "व्या",
-      "tag": "conjunct_error",
-      "cost": 0.5,
-      "note": "sanyukta akshara mismatch: guru=' ' learner='व्या'"
     },
     {
       "guru": "इ",
@@ -736,11 +1010,11 @@
       "note": "nasalisation differs: guru='ण्डः' learner='न्दं'"
     },
     {
-      "guru": " ",
+      "guru": "-",
       "learner": "धा",
-      "tag": "substitution",
+      "tag": "extra",
       "cost": 1.0,
-      "note": "guru=' ' learner='धा'"
+      "note": "learner added 'धा' where the guru's text had a pause"
     },
     {
       "guru": "॥",
@@ -763,6 +1037,123 @@
         "avg_logprob": -0.4739845275878906,
         "no_speech_prob": 0.4455395042896271
       },
+      "words": [
+        {
+          "word": "अस्चुत्तरस्याम्",
+          "start": 0.0,
+          "end": 2.8,
+          "probability": 0.6113542136218812
+        },
+        {
+          "word": "दिशिदेव",
+          "start": 2.8,
+          "end": 3.72,
+          "probability": 0.7035861665552313
+        },
+        {
+          "word": "धात्मा,",
+          "start": 3.72,
+          "end": 4.84,
+          "probability": 0.7046417530093875
+        },
+        {
+          "word": "ॐ",
+          "start": 5.4,
+          "end": 5.54,
+          "probability": 0.21983337650696436
+        },
+        {
+          "word": "लायो",
+          "start": 5.54,
+          "end": 6.66,
+          "probability": 0.3931873217225075
+        },
+        {
+          "word": "नाम",
+          "start": 6.66,
+          "end": 7.36,
+          "probability": 0.5241891741752625
+        },
+        {
+          "word": "नगादि",
+          "start": 7.36,
+          "end": 8.48,
+          "probability": 0.6448911726474762
+        },
+        {
+          "word": "राजाहा,",
+          "start": 8.48,
+          "end": 9.96,
+          "probability": 0.7464964985847473
+        },
+        {
+          "word": "ॐ",
+          "start": 10.18,
+          "end": 10.36,
+          "probability": 0.6806958317756653
+        },
+        {
+          "word": "पूर्वा",
+          "start": 10.36,
+          "end": 11.1,
+          "probability": 0.8392559124363793
+        },
+        {
+          "word": "परव्थो",
+          "start": 11.1,
+          "end": 12.4,
+          "probability": 0.5647607213921018
+        },
+        {
+          "word": "यने",
+          "start": 12.4,
+          "end": 13.1,
+          "probability": 0.5689501874148846
+        },
+        {
+          "word": "दीवा",
+          "start": 13.1,
+          "end": 13.82,
+          "probability": 0.7184701710939407
+        },
+        {
+          "word": "गाह्या,",
+          "start": 13.82,
+          "end": 14.78,
+          "probability": 0.7520594298839569
+        },
+        {
+          "word": "ॐ",
+          "start": 15.1,
+          "end": 15.38,
+          "probability": 0.7718371351559957
+        },
+        {
+          "word": "चितष्प्र।",
+          "start": 15.38,
+          "end": 16.3,
+          "probability": 0.6053827427900754
+        },
+        {
+          "word": "दिव्याई",
+          "start": 16.3,
+          "end": 17.42,
+          "probability": 0.7473657011985779
+        },
+        {
+          "word": "वमान",
+          "start": 17.42,
+          "end": 18.3,
+          "probability": 0.8429131627082824
+        },
+        {
+          "word": "दन्दंधा.",
+          "start": 18.3,
+          "end": 19.4,
+          "probability": 0.5994994178414345
+        }
+      ],
+      "duration": 19.4,
       "flagged": false,
       "flag_reason": null
     },
@@ -2320,18 +2711,18 @@
           "note": "nasalisation differs: guru='स्यां' learner='स्या'"
         },
         {
-          "guru": " ",
+          "guru": "-",
           "learner": "म्",
-          "tag": "anunasika_error",
-          "cost": 0.4,
-          "note": "nasalisation differs: guru=' ' learner='म्'"
+          "tag": "extra",
+          "cost": 1.0,
+          "note": "learner added 'म्'"
         },
         {
-          "guru": "-",
+          "guru": " ",
           "learner": " ",
-          "tag": "extra",
+          "tag": "match",
           "cost": 0.0,
-          "note": "whitespace-only line break (ignored)"
+          "note": ""
         },
         {
           "guru": "दि",
@@ -2413,9 +2804,9 @@
         {
           "guru": "मा",
           "learner": "ॐ",
-          "tag": "anunasika_error",
-          "cost": 0.4,
-          "note": "nasalisation differs: guru='मा' learner='ॐ'"
+          "tag": "substitution",
+          "cost": 1.0,
+          "note": "guru='मा' learner='ॐ'"
         },
         {
           "guru": "-",
@@ -2663,81 +3054,95 @@
           "note": "learner added 'ह्या'"
         },
         {
-          "guru": "ह्य",
+          "guru": "-",
           "learner": ",",
+          "tag": "extra",
+          "cost": 1.0,
+          "note": "learner added ','"
+        },
+        {
+          "guru": "-",
+          "learner": " ",
+          "tag": "extra",
+          "cost": 0.0,
+          "note": "whitespace-only line break (ignored)"
+        },
+        {
+          "guru": "ह्य",
+          "learner": "ॐ",
           "tag": "conjunct_error",
           "cost": 0.5,
-          "note": "sanyukta akshara mismatch: guru='ह्य' learner=','"
+          "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'"
+        },
+        {
+          "guru": "-",
+          "learner": " ",
+          "tag": "extra",
+          "cost": 0.0,
+          "note": "whitespace-only line break (ignored)"
+        },
+        {
+          "guru": "-",
+          "learner": "चि",
+          "tag": "extra",
+          "cost": 1.0,
+          "note": "learner added 'चि' where the guru's text had a pause"
+        },
+        {
+          "guru": "स्थि",
+          "learner": "त",
+          "tag": "conjunct_error",
+          "cost": 0.5,
+          "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'"
+        },
+        {
+          "guru": "तः",
+          "learner": "ष्प्र",
+          "tag": "conjunct_error",
+          "cost": 0.5,
+          "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'"
         },
         {
           "guru": " ",
+          "learner": "-",
+          "tag": "missing",
+          "cost": 0.0,
+          "note": "whitespace-only line break (ignored)"
+        },
+        {
+          "guru": "पृ",
+          "learner": "।",
+          "tag": "substitution",
+          "cost": 1.0,
+          "note": "guru='पृ' learner='।'"
+        },
+        {
+          "guru": "-",
           "learner": " ",
+          "tag": "extra",
+          "cost": 0.0,
+          "note": "whitespace-only line break (ignored)"
+        },
+        {
+          "guru": "थि",
+          "learner": "दि",
+          "tag": "substitution",
+          "cost": 1.0,
+          "note": "guru='थि' learner='दि'"
+        },
+        {
+          "guru": "व्या",
+          "learner": "व्या",
           "tag": "match",
           "cost": 0.0,
           "note": ""
         },
         {
-          "guru": "स्थि",
-          "learner": "ॐ",
-          "tag": "conjunct_error",
-          "cost": 0.5,
-          "note": "sanyukta akshara mismatch: guru='स्थि' learner='ॐ'"
-        },
-        {
-          "guru": "-",
-          "learner": " ",
-          "tag": "extra",
+          "guru": " ",
+          "learner": "-",
+          "tag": "missing",
           "cost": 0.0,
           "note": "whitespace-only line break (ignored)"
-        },
-        {
-          "guru": "तः",
-          "learner": "चि",
-          "tag": "substitution",
-          "cost": 1.0,
-          "note": "guru='तः' learner='चि'"
-        },
-        {
-          "guru": " ",
-          "learner": "त",
-          "tag": "substitution",
-          "cost": 1.0,
-          "note": "guru=' ' learner='त'"
-        },
-        {
-          "guru": "पृ",
-          "learner": "ष्प्र",
-          "tag": "conjunct_error",
-          "cost": 0.5,
-          "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
-        },
-        {
-          "guru": "थि",
-          "learner": "।",
-          "tag": "substitution",
-          "cost": 1.0,
-          "note": "guru='थि' learner='।'"
-        },
-        {
-          "guru": "-",
-          "learner": " ",
-          "tag": "extra",
-          "cost": 0.0,
-          "note": "whitespace-only line break (ignored)"
-        },
-        {
-          "guru": "व्या",
-          "learner": "दि",
-          "tag": "conjunct_error",
-          "cost": 0.5,
-          "note": "sanyukta akshara mismatch: guru='व्या' learner='दि'"
-        },
-        {
-          "guru": " ",
-          "learner": "व्या",
-          "tag": "conjunct_error",
-          "cost": 0.5,
-          "note": "sanyukta akshara mismatch: guru=' ' learner='व्या'"
         },
         {
           "guru": "इ",
@@ -2803,11 +3208,11 @@
           "note": "nasalisation differs: guru='ण्डः' learner='न्दं'"
         },
         {
-          "guru": " ",
+          "guru": "-",
           "learner": "धा",
-          "tag": "substitution",
+          "tag": "extra",
           "cost": 1.0,
-          "note": "guru=' ' learner='धा'"
+          "note": "learner added 'धा' where the guru's text had a pause"
         },
         {
           "guru": "॥",
@@ -2818,14 +3223,287 @@
         }
       ]
     },
+    "timing": {
+      "timing_available": true,
+      "approximate": false,
+      "errors": [
+        {
+          "type": "conjunct_error",
+          "guru_akshara": "स्त्यु",
+          "learner_akshara": "स्चु",
+          "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चु'",
+          "start": 0.0,
+          "end": 2.8,
+          "approximate": false
+        },
+        {
+          "type": "anunasika_error",
+          "guru_akshara": "स्यां",
+          "learner_akshara": "स्या",
+          "note": "nasalisation differs: guru='स्यां' learner='स्या'",
+          "start": 0.0,
+          "end": 2.8,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "म्",
+          "note": "learner added 'म्'",
+          "start": 0.0,
+          "end": 2.8,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "ता",
+          "learner_akshara": "धा",
+          "note": "guru='ता' learner='धा'",
+          "start": 3.72,
+          "end": 4.84,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "हि",
+          "learner_akshara": ",",
+          "note": "guru='हि' learner=','",
+          "start": 3.72,
+          "end": 4.84,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "मा",
+          "learner_akshara": "ॐ",
+          "note": "guru='मा' learner='ॐ'",
+          "start": 5.4,
+          "end": 5.54,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "ल",
+          "learner_akshara": "ला",
+          "note": "guru='ल' learner='ला'",
+          "start": 5.54,
+          "end": 6.66,
+          "approximate": false
+        },
+        {
+          "type": "aspiration_error",
+          "guru_akshara": "धि",
+          "learner_akshara": "दि",
+          "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)",
+          "start": 7.36,
+          "end": 8.48,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "जा",
+          "note": "learner added 'जा'",
+          "start": 8.48,
+          "end": 9.96,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "हा",
+          "note": "learner added 'हा'",
+          "start": 8.48,
+          "end": 9.96,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "जः",
+          "learner_akshara": ",",
+          "note": "guru='जः' learner=','",
+          "start": 8.48,
+          "end": 9.96,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "।",
+          "learner_akshara": "ॐ",
+          "note": "guru='।' learner='ॐ'",
+          "start": 10.18,
+          "end": 10.36,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "रौ",
+          "learner_akshara": "र",
+          "note": "guru='रौ' learner='र'",
+          "start": 11.1,
+          "end": 12.4,
+          "approximate": false
+        },
+        {
+          "type": "conjunct_error",
+          "guru_akshara": "तो",
+          "learner_akshara": "व्थो",
+          "note": "sanyukta akshara mismatch: guru='तो' learner='व्थो'",
+          "start": 11.1,
+          "end": 12.4,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "नि",
+          "learner_akshara": "ने",
+          "note": "guru='नि' learner='ने'",
+          "start": 12.4,
+          "end": 13.1,
+          "approximate": false
+        },
+        {
+          "type": "aspiration_error",
+          "guru_akshara": "धी",
+          "learner_akshara": "दी",
+          "note": "'ध' rendered as 'द' (mahaprana said as alpaprana)",
+          "start": 13.1,
+          "end": 13.82,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "व",
+          "learner_akshara": "वा",
+          "note": "guru='व' learner='वा'",
+          "start": 13.1,
+          "end": 13.82,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "ह्या",
+          "note": "learner added 'ह्या'",
+          "start": 13.82,
+          "end": 14.78,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": ",",
+          "note": "learner added ','",
+          "start": 13.82,
+          "end": 14.78,
+          "approximate": false
+        },
+        {
+          "type": "conjunct_error",
+          "guru_akshara": "ह्य",
+          "learner_akshara": "ॐ",
+          "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'",
+          "start": 15.1,
+          "end": 15.38,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "चि",
+          "note": "learner added 'चि' where the guru's text had a pause",
+          "start": 15.38,
+          "end": 16.3,
+          "approximate": false
+        },
+        {
+          "type": "conjunct_error",
+          "guru_akshara": "स्थि",
+          "learner_akshara": "त",
+          "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'",
+          "start": 15.38,
+          "end": 16.3,
+          "approximate": false
+        },
+        {
+          "type": "conjunct_error",
+          "guru_akshara": "तः",
+          "learner_akshara": "ष्प्र",
+          "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'",
+          "start": 15.38,
+          "end": 16.3,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "पृ",
+          "learner_akshara": "।",
+          "note": "guru='पृ' learner='।'",
+          "start": 15.38,
+          "end": 16.3,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "थि",
+          "learner_akshara": "दि",
+          "note": "guru='थि' learner='दि'",
+          "start": 16.3,
+          "end": 17.42,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "इ",
+          "learner_akshara": "ई",
+          "note": "guru='इ' learner='ई'",
+          "start": 16.3,
+          "end": 17.42,
+          "approximate": false
+        },
+        {
+          "type": "anunasika_error",
+          "guru_akshara": "ण्डः",
+          "learner_akshara": "न्दं",
+          "note": "nasalisation differs: guru='ण्डः' learner='न्दं'",
+          "start": 18.3,
+          "end": 19.4,
+          "approximate": false
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "धा",
+          "note": "learner added 'धा' where the guru's text had a pause",
+          "start": 18.3,
+          "end": 19.4,
+          "approximate": false
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "॥",
+          "learner_akshara": ".",
+          "note": "guru='॥' learner='.'",
+          "start": 18.3,
+          "end": 19.4,
+          "approximate": false
+        }
+      ]
+    },
     "rubric1": {
-      "score": 64.8,
+      "score": 60.2,
       "errors": [
         {
           "type": "conjunct_error",
           "guru_akshara": "स्त्यु",
           "learner_akshara": "स्चु",
           "note": "sanyukta akshara mismatch: guru='स्त्यु' learner='स्चु'"
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "म्",
+          "note": "learner added 'म्'"
         },
         {
           "type": "substitution",
@@ -2838,6 +3516,12 @@
           "guru_akshara": "हि",
           "learner_akshara": ",",
           "note": "guru='हि' learner=','"
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "मा",
+          "learner_akshara": "ॐ",
+          "note": "guru='मा' learner='ॐ'"
         },
         {
           "type": "substitution",
@@ -2912,52 +3596,46 @@
           "note": "learner added 'ह्या'"
         },
         {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": ",",
+          "note": "learner added ','"
+        },
+        {
           "type": "conjunct_error",
           "guru_akshara": "ह्य",
-          "learner_akshara": ",",
-          "note": "sanyukta akshara mismatch: guru='ह्य' learner=','"
+          "learner_akshara": "ॐ",
+          "note": "sanyukta akshara mismatch: guru='ह्य' learner='ॐ'"
+        },
+        {
+          "type": "extra",
+          "guru_akshara": null,
+          "learner_akshara": "चि",
+          "note": "learner added 'चि' where the guru's text had a pause"
         },
         {
           "type": "conjunct_error",
           "guru_akshara": "स्थि",
-          "learner_akshara": "ॐ",
-          "note": "sanyukta akshara mismatch: guru='स्थि' learner='ॐ'"
-        },
-        {
-          "type": "substitution",
-          "guru_akshara": "तः",
-          "learner_akshara": "चि",
-          "note": "guru='तः' learner='चि'"
-        },
-        {
-          "type": "substitution",
-          "guru_akshara": " ",
           "learner_akshara": "त",
-          "note": "guru=' ' learner='त'"
+          "note": "sanyukta akshara mismatch: guru='स्थि' learner='त'"
         },
         {
           "type": "conjunct_error",
-          "guru_akshara": "पृ",
+          "guru_akshara": "तः",
           "learner_akshara": "ष्प्र",
-          "note": "sanyukta akshara mismatch: guru='पृ' learner='ष्प्र'"
+          "note": "sanyukta akshara mismatch: guru='तः' learner='ष्प्र'"
+        },
+        {
+          "type": "substitution",
+          "guru_akshara": "पृ",
+          "learner_akshara": "।",
+          "note": "guru='पृ' learner='।'"
         },
         {
           "type": "substitution",
           "guru_akshara": "थि",
-          "learner_akshara": "।",
-          "note": "guru='थि' learner='।'"
-        },
-        {
-          "type": "conjunct_error",
-          "guru_akshara": "व्या",
           "learner_akshara": "दि",
-          "note": "sanyukta akshara mismatch: guru='व्या' learner='दि'"
-        },
-        {
-          "type": "conjunct_error",
-          "guru_akshara": " ",
-          "learner_akshara": "व्या",
-          "note": "sanyukta akshara mismatch: guru=' ' learner='व्या'"
+          "note": "guru='थि' learner='दि'"
         },
         {
           "type": "substitution",
@@ -2966,10 +3644,10 @@
           "note": "guru='इ' learner='ई'"
         },
         {
-          "type": "substitution",
-          "guru_akshara": " ",
+          "type": "extra",
+          "guru_akshara": null,
           "learner_akshara": "धा",
-          "note": "guru=' ' learner='धा'"
+          "note": "learner added 'धा' where the guru's text had a pause"
         },
         {
           "type": "substitution",
@@ -2979,27 +3657,17 @@
         }
       ],
       "aspiration_errors": 2,
-      "conjunct_errors": 7,
+      "conjunct_errors": 5,
       "dvitva_errors": 0,
-      "other_substitutions": 14
+      "other_substitutions": 13
     },
     "rubric2": {
-      "score": 60.0,
+      "score": 80.0,
       "errors": [
         {
           "guru_akshara": "स्यां",
           "learner_akshara": "स्या",
           "note": "nasalisation differs: guru='स्यां' learner='स्या'"
-        },
-        {
-          "guru_akshara": " ",
-          "learner_akshara": "म्",
-          "note": "nasalisation differs: guru=' ' learner='म्'"
-        },
-        {
-          "guru_akshara": "मा",
-          "learner_akshara": "ॐ",
-          "note": "nasalisation differs: guru='मा' learner='ॐ'"
         },
         {
           "guru_akshara": "ण्डः",
@@ -3020,7 +3688,7 @@
       "learner_word_count": 19
     },
     "scoring": {
-      "overall_score": 70.7,
+      "overall_score": 73.4,
       "grade": "Needs practice (अभ्यासं करणीयम्)"
     }
   }
