@@ -1,5 +1,95 @@
 # Uchcharana Pariksha (उच्चारण परीक्षा) — Mana Bhasha Pronunciation Test
 
+# Table of Contents
+
+1. [Uchcharana Pariksha — Mana Bhasha Pronunciation Test](#1-uchcharana-pariksha--mana-bhasha-pronunciation-test)
+   - [Project Overview](#project-overview)
+   - [Pronunciation Rubrics](#pronunciation-rubrics)
+     - [Syllable Perfection](#syllable-perfection)
+     - [Anunasika (Nasalisation)](#anunasika-nasalisation)
+     - [Word Splitting (Pada-Cheda)](#word-splitting-pada-chedа)
+   - [Tune/Intonation](#tuneintonation)
+   - [Two Scripts, One Engine](#two-scripts-one-engine)
+   - [Full Pipeline Observability](#full-pipeline-observability)
+
+2. [The Actual Dataset](#2-the-actual-dataset)
+   - [Dataset Directory Structure](#dataset-directory-structure)
+   - [Guru Reference Texts](#guru-reference-texts)
+   - [Teacher and Learner Audio](#teacher-and-learner-audio)
+   - [Dataset Metadata](#dataset-metadata)
+
+3. [Why Comparison Happens in the Text Layer](#3-why-comparison-happens-in-the-text-layer)
+   - [Text-Layer Pipeline](#text-layer-pipeline)
+   - [Advantages of Text-Layer Comparison](#advantages-of-text-layer-comparison)
+   - [Audio-Layer Comparison](#audio-layer-comparison)
+
+4. [File Structure](#4-file-structure)
+   - [Repository Structure](#repository-structure)
+   - [Data Organization](#data-organization)
+   - [ASR Modules](#asr-modules)
+   - [Phonetics Modules](#phonetics-modules)
+   - [Alignment](#alignment)
+   - [Rubrics](#rubrics)
+   - [Scoring and Reporting](#scoring-and-reporting)
+   - [Scripts](#scripts)
+   - [Tests and Outputs](#tests-and-outputs)
+
+5. [Quick Start](#5-quick-start)
+   - [Installation](#installation)
+   - [Run Unit Tests](#run-unit-tests)
+   - [Run the Bundled Demo](#run-the-bundled-demo)
+   - [Run a Single Text-Only Sample](#run-a-single-text-only-sample)
+
+6. [Running on the Real Dataset](#6-running-on-the-real-dataset)
+   - [Add the Real Dataset](#add-the-real-dataset)
+   - [Install ASR Backend and FFmpeg](#install-asr-backend-and-ffmpeg)
+   - [Audio Preflight Validation](#audio-preflight-validation)
+   - [Run the Full Dataset](#run-the-full-dataset)
+   - [Run a Limited Sanity Check](#run-a-limited-sanity-check)
+   - [Generated Reports](#generated-reports)
+
+7. [Observability](#7-observability)
+   - [Verbose Mode](#verbose-mode)
+   - [Stage JSON Files](#stage-json-files)
+   - [Pipeline Stages](#pipeline-stages)
+   - [Batch Stage Output](#batch-stage-output)
+   - [ASR Audit Summary](#asr-audit-summary)
+   - [Audio Preflight Check](#audio-preflight-check)
+
+8. [About the Demo](#8-about-the-demo)
+   - [Synthetic Learner Transcripts](#synthetic-learner-transcripts)
+   - [Perfect Pronunciation Examples](#perfect-pronunciation-examples)
+   - [Aspiration Errors](#aspiration-errors)
+   - [Gemination Errors](#gemination-errors)
+   - [Placeholder Audio Files](#placeholder-audio-files)
+
+9. [ASR Backends](#9-asr-backends)
+   - [ASRBackend Interface](#asrbackend-interface)
+   - [Whisper](#whisper)
+   - [Bhashini API](#bhashini-api)
+   - [IndicWav2Vec2 / Phoneme-CTC Models](#indicwav2vec2--phoneme-ctc-models)
+   - [Language-Specific ASR Configuration](#language-specific-asr-configuration)
+   - [Custom ASR Backends](#custom-asr-backends)
+
+10. [Network Limitations](#10-network-limitations)
+    - [Sandbox Network Restrictions](#sandbox-network-restrictions)
+    - [Real Audio Limitations](#real-audio-limitations)
+    - [Model-Weight Limitations](#model-weight-limitations)
+    - [Fake ASR Testing](#fake-asr-testing)
+    - [Components Tested Without External Access](#components-tested-without-external-access)
+
+11. [Command Reference](#11-command-reference)
+    - [Run All Unit Tests](#run-all-unit-tests)
+    - [Text-Only Single Sample](#text-only-single-sample)
+    - [Verbose Trace](#verbose-trace)
+    - [Per-Stage JSON Files](#per-stage-json-files)
+    - [Single Sample from Real Audio](#single-sample-from-real-audio)
+    - [Bundled Demo](#bundled-demo)
+    - [Real Dataset Sanity Check](#real-dataset-sanity-check)
+    - [Full Dataset Batch](#full-dataset-batch)
+    - [Disable ASR Audit](#disable-asr-audit)
+    - [Check for Empty Audio Files](#check-for-empty-audio-files)
+
 Link for web application README - https://github.com/kalidas-mtp-btp/ManaBhashaUchcharanaPariksha/blob/rectified_prompt_echo/web/README-web.md
 
 An automated pronunciation-assessment engine that compares each **learner's**
