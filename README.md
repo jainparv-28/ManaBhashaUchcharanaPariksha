@@ -1,5 +1,7 @@
 # Uchcharana Pariksha (उच्चारण परीक्षा) — Mana Bhasha Pronunciation Test
 
+Link for web application README - https://github.com/kalidas-mtp-btp/ManaBhashaUchcharanaPariksha/blob/rectified_prompt_echo/web/README-web.md
+
 An automated pronunciation-assessment engine that compares each **learner's**
 recitation against the **guru's** reference text, scored against the three
 rubrics from Pavan's email, and built to work directly against the real
