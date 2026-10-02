@@ -202,36 +202,6 @@ files.
 
 ---
 
-## 4. Results (on the real dataset's reference texts)
-
-The actual `.weba`/`.mp3` audio could not be processed in this sandbox
-(see §6), so the pipeline is demonstrated on the **real guru texts** for
-Shlokam 1 (Sanskrit) and Padyam 2 (Telugu) with two synthetic learner
-transcripts each:
-
-| Item | Learner | Induced error | Score | Rubric 1 | Rubric 2 | Rubric 3 |
-|---|---|---|---|---|---|---|
-| shlokam1 (Sanskrit) | demo_perfect | none | **100.0** | 100.0 | 100.0 | 100.0 |
-| shlokam1 (Sanskrit) | demo_aspiration_error | पृथिव्या→पृतिव्या (थ→त) | **99.8** | 99.7 | 100.0 | 100.0 |
-| padyam2 (Telugu) | demo_perfect | none | **100.0** | 100.0 | 100.0 | 100.0 |
-| padyam2 (Telugu) | demo_geminate_error | వికార→విఖార (క→ఖ) | **99.8** | 99.7 | 100.0 | 100.0 |
-
-Both single-error cases were correctly detected, correctly isolated to
-Rubric 1 only, and correctly tagged with the exact guru-vs-learner akshara
-pair quoted in the report.
-
-Additionally, for §3's observability work, a full text-only run
-(`shlokam1_check`, one थ/त aspiration error induced) was traced end-to-end
-with `--write-stages`: 12 stage files were produced, matching the
-alignment tag counts (`{"match": 28, "substitution": 1}`) and rubric
-scores independently reproduced from the raw JSON, confirming the trace
-data is internally consistent with the scored report, not a separate
-approximation of it.
-
-Unit tests (`tests/test_*.py`) all pass, including the Devanagari **and**
-Telugu variants of every one of Pavan's flagship examples, unaffected by
-the observability changes.
-
 ## 5. What was and wasn't possible to run end-to-end here
 
 **Fully implemented, unit-tested, and demonstrated:**
