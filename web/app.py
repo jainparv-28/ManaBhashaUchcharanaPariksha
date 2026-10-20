@@ -76,6 +76,8 @@ if not _FFMPEG:
 
 class _GroqWhisperWrapper:
     def __init__(self):
+        if OpenAI is None:
+            raise RuntimeError("openai is not installed")
         self.client = OpenAI(
             api_key=os.environ.get("GROQ_API_KEY"),
             base_url="https://api.groq.com/openai/v1"
@@ -132,7 +134,16 @@ def _make_browser_wav(src_path: str) -> str | None:
 
 
 @app.route("/")
+@app.route("/api")
+@app.route("/api/index.py")
 def index():
+    index_file = os.path.join(STATIC_DIR, "index.html")
+    if not os.path.exists(index_file):
+        # Fallback check if static is located at root or under web/
+        alt_path = os.path.join(REPO_ROOT, "web", "static")
+        if os.path.exists(os.path.join(alt_path, "index.html")):
+            return send_from_directory(alt_path, "index.html")
+        return f"Static directory not found. Looked in: {STATIC_DIR} and {alt_path}", 404
     return send_from_directory(STATIC_DIR, "index.html")
 
 
