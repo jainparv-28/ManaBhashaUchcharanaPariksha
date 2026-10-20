@@ -36,7 +36,7 @@ import shutil
 import mimetypes
 import subprocess
 import traceback
-
+import tempfile
 from flask import Flask, request, jsonify, send_from_directory
 
 # Python's mimetypes module doesn't know about .weba (WebM audio) out of
@@ -51,7 +51,7 @@ sys.path.insert(0, REPO_ROOT)
 
 from src.pipeline import evaluate_sample  # noqa: E402
 
-UPLOAD_ROOT = os.path.join(os.path.dirname(__file__), "uploads")
+UPLOAD_ROOT = os.path.join(tempfile.gettempdir(), "uploads")
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(UPLOAD_ROOT, exist_ok=True)
 
