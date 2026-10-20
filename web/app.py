@@ -29,7 +29,7 @@ POST /api/evaluate                    multipart form:
 """
 from __future__ import annotations
 from src.asr.base import ASRResult
-from dotenv import load_dotenv
+
 import os
 import sys
 import uuid
@@ -40,7 +40,11 @@ import traceback
 import tempfile
 from flask import Flask, request, jsonify, send_from_directory
 from openai import OpenAI
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 # Python's mimetypes module doesn't know about .weba (WebM audio) out of
 # the box, so send_from_directory falls back to application/octet-stream --
