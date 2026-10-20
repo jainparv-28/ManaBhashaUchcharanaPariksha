@@ -1,0 +1,13 @@
+# Core (no internet / model download required)
+PyYAML>=6.0
+
+# Optional ASR backend (needs one-time internet access to download model weights,
+# and needs ffmpeg on PATH to decode the dataset's .weba/.mp3 audio -- see README)
+# openai-whisper>=20231117
+
+# Optional: Roman <-> Devanagari/Telugu transliteration helper (only needed if
+# you want to cross-check the *_roman.txt files against the *_unicode.txt files)
+# indic-transliteration>=2.3.0
+
+# Testing
+pytest>=7.0
