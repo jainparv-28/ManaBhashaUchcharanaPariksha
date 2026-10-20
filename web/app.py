@@ -56,23 +56,24 @@ except ImportError:
 mimetypes.add_type("audio/webm", ".weba")
 mimetypes.add_type("audio/webm", ".webm")
 
-REPO_ROOT = os.path.join(os.path.dirname(__file__), "..")
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
-
+from src.asr.base import ASRResult 
+from src.pipeline import evaluate_sample  # noqa: E402
 _candidate_dirs = [
     os.path.join(REPO_ROOT, "web", "static"),
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"),
     "/var/task/web/static"
 ]
-STATIC_DIR = next((d for d in _candidate_dirs if os.path.isdir(d)), _candidate_dirs[0])
-from src.pipeline import evaluate_sample  # noqa: E402
+#STATIC_DIR = next((d for d in _candidate_dirs if os.path.isdir(d)), _candidate_dirs[0])
+
 
 UPLOAD_ROOT = os.path.join(tempfile.gettempdir(), "uploads")
 #STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(UPLOAD_ROOT, exist_ok=True)
 
-app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="")
+app = Flask(__name__,static_url_path="")
 
 _whisper_asr = None  # lazy singleton -- loading Whisper's weights is slow
 _FFMPEG = shutil.which("ffmpeg")
@@ -138,12 +139,20 @@ def _make_browser_wav(src_path: str) -> str | None:
     except Exception as e:
         print(f"[warning] ffmpeg transcoding for browser playback failed for {src_path}: {e}")
         return None
+def _find_static_file(filename: str):
+    for directory in _candidate_dirs:
+        candidate = os.path.join(directory, filename)
+        if os.path.isfile(candidate):
+            return directory, filename
+    return None, None
 @app.route("/")
 @app.route("/api")
 @app.route("/api/index.py")
 def index():
-    return send_from_directory(STATIC_DIR, "index.html")
-
+    directory, filename = _find_static_file("index.html")
+    if directory:
+        return send_from_directory(directory, filename, mimetype="text/html")
+    return "index.html not found", 404
 
 @app.route("/uploads/<session_id>/<path:filename>")
 def serve_upload(session_id, filename):
@@ -243,14 +252,27 @@ def api_evaluate():
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
-@app.route("/<path:filename>")
+CONTENT_TYPES = {
+    ".css": "text/css",
+    ".js": "application/javascript",
+    ".html": "text/html",
+    ".svg": "image/svg+xml",
+    ".png": "image/png",
+    ".ico": "image/x-icon",
+    ".webm": "audio/webm",
+    ".weba": "audio/webm",
+    ".wav": "audio/wav",
+    ".mp3": "audio/mpeg"
+}
 @app.route("/<path:filename>")
 def serve_static(filename):
-    for directory in _candidate_dirs:
-        file_path = os.path.join(directory, filename)
-        if os.path.isfile(file_path):
-            mimetype, _ = mimetypes.guess_type(filename)
-            return send_from_directory(directory, filename, mimetype=mimetype)
+    # Remove leading slashes if passed
+    filename = filename.lstrip("/")
+    directory, target_file = _find_static_file(filename)
+    if directory:
+        ext = os.path.splitext(filename)[1].lower()
+        mimetype = CONTENT_TYPES.get(ext, mimetypes.guess_type(filename)[0] or "application/octet-stream")
+        return send_from_directory(directory, target_file, mimetype=mimetype)
     return "Not Found", 404
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
