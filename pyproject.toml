@@ -3,8 +3,8 @@ name = "mana-bhasha-uchcharana-pariksha"
 version = "0.1.0"
 description = "Speech evaluation app"
 dependencies = [
-    "flask"
+    "flask",
+    "openai",
+    "python-dotenv",
+    "pyyaml"
 ]
-
-[tool.vercel]
-entrypoint = "web.app:app"

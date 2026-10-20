@@ -11,3 +11,6 @@ PyYAML>=6.0
 
 # Testing
 pytest>=7.0
+
+openai
+python-dotenv

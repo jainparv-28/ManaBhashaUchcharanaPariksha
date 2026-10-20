@@ -39,7 +39,10 @@ import subprocess
 import traceback
 import tempfile
 from flask import Flask, request, jsonify, send_from_directory
-from openai import OpenAI
+try:
+    from openai import OpenAI
+except ImportError:
+    OpenAI = None
 try:
     from dotenv import load_dotenv
     load_dotenv()
