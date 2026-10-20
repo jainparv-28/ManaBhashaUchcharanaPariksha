@@ -7,4 +7,4 @@ dependencies = [
 ]
 
 [tool.vercel]
-entrypoint = "web/app.py"
+entrypoint = "web.app:app"
