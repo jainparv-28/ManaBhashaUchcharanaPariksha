@@ -57,12 +57,19 @@ mimetypes.add_type("audio/webm", ".weba")
 mimetypes.add_type("audio/webm", ".webm")
 
 REPO_ROOT = os.path.join(os.path.dirname(__file__), "..")
-sys.path.insert(0, REPO_ROOT)
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
 
+_candidate_dirs = [
+    os.path.join(REPO_ROOT, "web", "static"),
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"),
+    "/var/task/web/static"
+]
+STATIC_DIR = next((d for d in _candidate_dirs if os.path.isdir(d)), _candidate_dirs[0])
 from src.pipeline import evaluate_sample  # noqa: E402
 
 UPLOAD_ROOT = os.path.join(tempfile.gettempdir(), "uploads")
-STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+#STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(UPLOAD_ROOT, exist_ok=True)
 
 app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="")
@@ -237,12 +244,13 @@ def api_evaluate():
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 @app.route("/<path:filename>")
+@app.route("/<path:filename>")
 def serve_static(filename):
-    file_path = os.path.join(STATIC_DIR, filename)
-    if os.path.isfile(file_path):
-        mimetype, _ = mimetypes.guess_type(filename)
-        return send_from_directory(STATIC_DIR, filename, mimetype=mimetype)
+    for directory in _candidate_dirs:
+        file_path = os.path.join(directory, filename)
+        if os.path.isfile(file_path):
+            mimetype, _ = mimetypes.guess_type(filename)
+            return send_from_directory(directory, filename, mimetype=mimetype)
     return "Not Found", 404
-
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
