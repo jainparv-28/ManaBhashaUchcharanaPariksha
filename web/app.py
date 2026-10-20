@@ -144,14 +144,6 @@ def serve_upload(session_id, filename):
     mimetype, _ = mimetypes.guess_type(filename)
     return send_from_directory(directory, filename, mimetype=mimetype)
 
-
-@app.route("/uploads/<session_id>/<path:filename>")
-def serve_upload(session_id, filename):
-    directory = os.path.join(UPLOAD_ROOT, session_id)
-    mimetype, _ = mimetypes.guess_type(filename)
-    return send_from_directory(directory, filename, mimetype=mimetype)
-
-
 @app.route("/api/evaluate", methods=["POST"])
 def api_evaluate():
     try:
@@ -244,7 +236,13 @@ def api_evaluate():
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
-
+@app.route("/<path:filename>")
+def serve_static(filename):
+    file_path = os.path.join(STATIC_DIR, filename)
+    if os.path.isfile(file_path):
+        mimetype, _ = mimetypes.guess_type(filename)
+        return send_from_directory(STATIC_DIR, filename, mimetype=mimetype)
+    return "Not Found", 404
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
