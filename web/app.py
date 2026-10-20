@@ -131,20 +131,18 @@ def _make_browser_wav(src_path: str) -> str | None:
     except Exception as e:
         print(f"[warning] ffmpeg transcoding for browser playback failed for {src_path}: {e}")
         return None
-
-
 @app.route("/")
 @app.route("/api")
 @app.route("/api/index.py")
 def index():
-    index_file = os.path.join(STATIC_DIR, "index.html")
-    if not os.path.exists(index_file):
-        # Fallback check if static is located at root or under web/
-        alt_path = os.path.join(REPO_ROOT, "web", "static")
-        if os.path.exists(os.path.join(alt_path, "index.html")):
-            return send_from_directory(alt_path, "index.html")
-        return f"Static directory not found. Looked in: {STATIC_DIR} and {alt_path}", 404
     return send_from_directory(STATIC_DIR, "index.html")
+
+
+@app.route("/uploads/<session_id>/<path:filename>")
+def serve_upload(session_id, filename):
+    directory = os.path.join(UPLOAD_ROOT, session_id)
+    mimetype, _ = mimetypes.guess_type(filename)
+    return send_from_directory(directory, filename, mimetype=mimetype)
 
 
 @app.route("/uploads/<session_id>/<path:filename>")

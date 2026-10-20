@@ -6,3 +6,6 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from web.app import app
+
+# Export for Vercel WSGI handler
+app = app
