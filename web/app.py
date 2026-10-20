@@ -28,7 +28,8 @@ POST /api/evaluate                    multipart form:
                                        -> JSON report incl. timed_errors
 """
 from __future__ import annotations
-
+from src.asr.base import ASRResult
+from dotenv import load_dotenv
 import os
 import sys
 import uuid
@@ -38,6 +39,8 @@ import subprocess
 import traceback
 import tempfile
 from flask import Flask, request, jsonify, send_from_directory
+from openai import OpenAI
+load_dotenv()
 
 # Python's mimetypes module doesn't know about .weba (WebM audio) out of
 # the box, so send_from_directory falls back to application/octet-stream --
@@ -64,12 +67,37 @@ if not _FFMPEG:
           "as-is for browser playback, which Safari (and some other browsers) cannot "
           "decode. Install ffmpeg (same requirement Whisper already has) to fix this.")
 
+class _GroqWhisperWrapper:
+    def __init__(self):
+        self.client = OpenAI(
+            api_key=os.environ.get("GROQ_API_KEY"),
+            base_url="https://api.groq.com/openai/v1"
+        )
 
+    def transcribe(self, audio_path: str, lang: str = "sa", **kwargs):
+        with open(audio_path, "rb") as f:
+            res = self.client.audio.transcriptions.create(
+                model="whisper-large-v3-turbo",
+                file=f,
+                language=lang,
+                response_format="verbose_json"
+            )
+        data = res if isinstance(res, dict) else res.model_dump()
+        return ASRResult(
+            text=data.get("text", "").strip(),
+            language=data.get("language", lang),
+            duration=data.get("duration", 0.0),
+            words=data.get("words") or [],
+            segments=data.get("segments", []),
+            avg_logprob=0.0,
+            no_speech_prob=0.0,
+            prompt_echo_suspected=False,
+            diagnostics={"backend": "groq_whisper"}
+        )
 def _get_asr_backend():
     global _whisper_asr
     if _whisper_asr is None:
-        from src.asr.whisper_asr import WhisperASR
-        _whisper_asr = WhisperASR()
+        _whisper_asr = _GroqWhisperWrapper()
     return _whisper_asr
 
 
