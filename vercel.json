@@ -11,12 +11,20 @@
       "dest": "/api/index.py"
     },
     {
-      "src": "/api/evaluate",
+      "src": "/api/(.*)",
       "dest": "/api/index.py"
     },
     {
-      "src": "/(.*)",
+      "src": "/api",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|svg|ico|webm|wav|mp3))",
       "dest": "/web/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/web/static/index.html"
     }
   ]
 }
