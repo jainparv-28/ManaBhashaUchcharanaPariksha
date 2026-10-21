@@ -113,7 +113,7 @@ class _GroqWhisperWrapper:
         data = res if isinstance(res, dict) else res.model_dump()
         return ASRResult(
             text=data.get("text", "").strip(),
-            language=data.get("language", lang),
+           #language=data.get("language", lang),
             duration=data.get("duration", 0.0),
             words=data.get("words") or [],
             segments=data.get("segments", []),
