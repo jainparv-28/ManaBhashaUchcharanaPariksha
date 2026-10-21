@@ -5,10 +5,18 @@
       "includeFiles": "web/**,src/**,config.yaml"
     }
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/api/index.py"
+      "src": "/uploads/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/api/evaluate",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/web/static/$1"
     }
   ]
 }
