@@ -120,7 +120,7 @@ class _GroqWhisperWrapper:
             avg_logprob=0.0,
             no_speech_prob=0.0,
             prompt_echo_suspected=False,
-            diagnostics={"backend": "groq_whisper"}
+            diagnostics={"backend": "groq_whisper", "language": data.get("language", lang)}
         )
 def _get_asr_backend():
     global _whisper_asr
