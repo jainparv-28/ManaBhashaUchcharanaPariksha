@@ -98,10 +98,15 @@ class _GroqWhisperWrapper:
         )
 
     def transcribe(self, audio_path: str, lang: str = "sa", **kwargs):
+        ext = os.path.splitext(audio_path)[1].lower()
+        if ext in (".weba", ""):
+            filename = "audio.webm"
+        else:
+            filename = f"audio{ext}"
         with open(audio_path, "rb") as f:
             res = self.client.audio.transcriptions.create(
                 model="whisper-large-v3-turbo",
-                file=f,
+                file=(filename ,f),
                 language=lang,
                 response_format="verbose_json"
             )
