@@ -1,3 +1,8 @@
 # Extra dependency for the web UI only -- does not replace/modify the
 # repo's main requirements.txt.
 Flask>=3.0
+
+openai
+python-dotenv
+httpx>=0.24.0
+certifi
