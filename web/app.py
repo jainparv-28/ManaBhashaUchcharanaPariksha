@@ -116,11 +116,11 @@ class _GroqWhisperWrapper:
            #language=data.get("language", lang),
             duration=data.get("duration", 0.0),
             words=data.get("words") or [],
-            segments=data.get("segments", []),
+          
             avg_logprob=0.0,
             no_speech_prob=0.0,
             prompt_echo_suspected=False,
-            diagnostics={"backend": "groq_whisper", "language": data.get("language", lang)}
+            diagnostics={"backend": "groq_whisper", "language": data.get("language", lang),  "segments": data.get("segments", [])}
         )
 def _get_asr_backend():
     global _whisper_asr
