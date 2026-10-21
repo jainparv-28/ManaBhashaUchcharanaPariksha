@@ -86,7 +86,9 @@ class _GroqWhisperWrapper:
     def __init__(self):
         if OpenAI is None:
             raise RuntimeError("openai is not installed")
-        api_key = os.environ.get("GROQ_API_KEY", "").strip()
+        api_key = os.environ.get("GROQ_API_KEY", "").strip().strip('"').strip("'")
+        masked = f"{api_key[:6]}...{api_key[-4:]}" if len(api_key) > 10 else "EMPTY_OR_SHORT"
+        print(f"[ASR DEBUG] GROQ_API_KEY len={len(api_key)} masked={masked}")
         if not api_key:
             raise RuntimeError("GROQ_API_KEY environment variable is missing on Vercel.")
         self.client = OpenAI(
