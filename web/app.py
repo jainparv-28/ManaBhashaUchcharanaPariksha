@@ -249,7 +249,7 @@ def api_evaluate():
             "learner_audio_url": learner_audio_url,
             "guru_audio_url": guru_audio_url,
             "duration": report["stages"]["asr"]["duration"],
-            "browser_playback_transcoded": bool(_FFMPEG),
+            "browser_playback_transcoded": True,
         })
 
     except ValueError as e:
