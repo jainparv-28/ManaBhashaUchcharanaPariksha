@@ -15,4 +15,4 @@ openai
 python-dotenv
 httpx>=0.24.0
 certifi
-
+flask

@@ -88,16 +88,11 @@ class _GroqWhisperWrapper:
             raise RuntimeError("openai is not installed")
         api_key = os.environ.get("GROQ_API_KEY", "").strip()
         if not api_key:
-            raise RuntimeError("GROQ_API_KEY environment variable is missing.")
-        import httpx
-        http_client = httpx.Client(
-            http2=False,
-            timeout=httpx.Timeout(60.0, connect=15.0)
-        )
+            raise RuntimeError("GROQ_API_KEY environment variable is missing on Vercel.")
         self.client = OpenAI(
             api_key=api_key,
             base_url="https://api.groq.com/openai/v1",
-            http_client=http_client
+            timeout=45.0,
         )
 
     def transcribe(self, audio_path: str, lang: str = "sa", **kwargs):
