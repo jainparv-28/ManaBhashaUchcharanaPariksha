@@ -14,3 +14,5 @@ pytest>=7.0
 
 openai
 python-dotenv
+httpx>=0.24.0
+certifi
