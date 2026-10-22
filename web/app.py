@@ -74,23 +74,6 @@ UPLOAD_ROOT = os.path.join(tempfile.gettempdir(), "uploads")
 os.makedirs(UPLOAD_ROOT, exist_ok=True)
 
 app = Flask(__name__,static_url_path="")
-# ----------------- HTTP Basic Auth Gate -----------------
-APP_USERNAME = os.environ.get("APP_USERNAME", "ManaBhasha")
-APP_PASSWORD = os.environ.get("APP_PASSWORD", "Uchcharana@2026")
-
-@app.before_request
-def require_basic_auth():
-    if request.path == "/favicon.ico":
-        return None
-
-    auth = request.authorization
-    if not auth or auth.username != APP_USERNAME or auth.password != APP_PASSWORD:
-        return (
-            "Access Restricted. Please log in with valid credentials.",
-            401,
-            {"WWW-Authenticate": 'Basic realm="ManaBhasha Access"'}
-        )
-
 _whisper_asr = None  # lazy singleton -- loading Whisper's weights is slow
 _FFMPEG = shutil.which("ffmpeg")
 if not _FFMPEG:
