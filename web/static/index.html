@@ -8,34 +8,44 @@
 </head>
 <body>
   <header>
-    <h1>उच्चारण परीक्षा <span class="subtitle">Pronunciation Check</span></h1>
-    <p class="tagline">Enter the correct text, upload the learner's recitation (and optionally the guru's), and see exactly where -- in seconds -- the pronunciation went wrong.</p>
+    <div class="head-row">
+      <div>
+        <h1>उच्चारण परीक्षा <span class="subtitle">Pronunciation Check</span></h1>
+        <p class="tagline">Choose a shloka / padyam, listen to the guru, record the learner live, and see exactly where the pronunciation went wrong.</p>
+      </div>
+      <form method="post" action="/logout" class="logout-form">
+        <button type="submit" class="btn ghost">Log out</button>
+      </form>
+    </div>
   </header>
 
   <main>
     <section class="panel" id="input-panel">
-      <h2>1. Input</h2>
+      <h2>1. Select, listen &amp; record</h2>
       <form id="eval-form">
-        <label for="guru_text">Correct / reference text</label>
-        <textarea id="guru_text" name="guru_text" rows="3"
-          placeholder="गङ्गा तटे बुद्धः अवसत् । (Devanagari for shlokas, Telugu script for padyams)"></textarea>
-
-        <div class="or-row"><span>or upload a .txt file</span></div>
-        <input type="file" id="guru_text_file" name="guru_text_file" accept=".txt">
-
-        <label for="lang">Script / language</label>
-        <select id="lang" name="lang">
-          <option value="sa">Sanskrit (Devanagari) -- shloka</option>
-          <option value="te">Telugu -- padyam</option>
+        <label for="item_select">Select the shloka / padyam</label>
+        <select id="item_select" name="item_id">
+          <option value="">-- Select --</option>
         </select>
 
-        <label for="learner_audio">Learner's audio (required)</label>
-        <input type="file" id="learner_audio" name="learner_audio" accept="audio/*,.weba,.webm,.mp3,.wav,.m4a,.ogg" required>
+        <div id="item-detail" hidden>
+          <label>Guru's audio</label>
+          <audio id="guru-select-audio" controls preload="none"></audio>
+          <label>Reference text</label>
+          <div id="ref-text" class="ref-text"></div>
+        </div>
 
-        <label for="guru_audio">Guru's audio (optional, for side-by-side listening)</label>
-        <input type="file" id="guru_audio" name="guru_audio" accept="audio/*,.weba,.webm,.mp3,.wav,.m4a,.ogg">
+        <label>Learner's live recording</label>
+        <div class="rec-row">
+          <button type="button" id="rec-btn" class="btn rec" disabled>● Record</button>
+          <button type="button" id="play-btn" class="btn" disabled>▶ Play</button>
+          <button type="button" id="stop-btn" class="btn" disabled>■ Stop</button>
+          <span id="rec-timer" class="rec-timer">00:00</span>
+        </div>
+        <audio id="rec-audio" hidden></audio>
+        <div class="hint">Select an item first. Press Record, recite, then Stop. Use Play to check the recording, or Re-record to try again.</div>
 
-        <button type="submit" id="submit-btn">Evaluate pronunciation</button>
+        <button type="submit" id="submit-btn" disabled>Evaluate pronunciation</button>
       </form>
       <div id="status" class="status" hidden></div>
     </section>

@@ -2,10 +2,11 @@
   "version": 2,
   "functions": {
     "api/index.py": {
-      "includeFiles": "web/**,src/**,config.yaml"
+      "includeFiles": "{web/**,src/**,config.yaml,data/reference_texts/**,audios_for_pronunciation_test/audios_teachers/**}"
     }
   },
   "routes": [
+    { "src": "/(.*)", "dest": "/api/index.py" },
     {
       "src": "/uploads/(.*)",
       "dest": "/api/index.py"
