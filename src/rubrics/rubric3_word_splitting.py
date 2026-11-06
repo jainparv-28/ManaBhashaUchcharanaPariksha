@@ -1,25 +1,21 @@
+"""
+Rubric 3 -- word splitting (pada-cheda).
+
+Word boundaries of both recitations are located in the SAME coordinate
+system (position among the guru's aksharas, via the alignment). Boundaries
+are then compared:
+  * guru boundary the learner lacks  -> words run together
+  * learner boundary the guru lacks  -> pause inside a word
+Score is the F1 of boundary agreement; matching tolerates +/-1 akshara
+because ASR garbling near a boundary can shift it slightly.
+"""
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Optional
 from ..phonetics.akshara import Akshara, to_words
+from ..alignment.align import AlignedPair
 
-
-def _word_text(word: List[Akshara]) -> str:
-    return "".join(a.text for a in word)
-
-
-def _levenshtein(a: str, b: str) -> int:
-    n, m = len(a), len(b)
-    dp = [[0] * (m + 1) for _ in range(n + 1)]
-    for i in range(n + 1):
-        dp[i][0] = i
-    for j in range(m + 1):
-        dp[0][j] = j
-    for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            cost = 0 if a[i - 1] == b[j - 1] else 1
-            dp[i][j] = min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost)
-    return dp[n][m]
+TOLERANCE = 1
 
 
 @dataclass
@@ -27,55 +23,79 @@ class Rubric3Result:
     guru_word_count: int = 0
     learner_word_count: int = 0
     boundary_errors: List[dict] = field(default_factory=list)
+    error_units: int = 0
     score: float = 100.0
 
     def feedback(self) -> List[str]:
         if not self.boundary_errors:
             return ["Word boundaries (pada-cheda) matched the guru's rendition throughout."]
-        msgs = []
-        for e in self.boundary_errors:
-            msgs.append(e["note"])
-        return msgs
+        return [e["note"] for e in self.boundary_errors]
 
 
-def evaluate(guru_aksharas: List[Akshara], learner_aksharas: List[Akshara]) -> Rubric3Result:
-    guru_words = to_words(guru_aksharas)
-    learner_words = to_words(learner_aksharas)
-    guru_texts = [_word_text(w) for w in guru_words]
-    learner_texts = ["".join(a.text for a in w) for w in learner_words]
+def _word_text(word: List[Akshara]) -> str:
+    return "".join(a.text for a in word)
 
-    r = Rubric3Result(guru_word_count=len(guru_texts), learner_word_count=len(learner_texts))
 
-    guru_joined = "".join(guru_texts)
-    learner_joined = "".join(learner_texts)
+def _boundaries(alignment: List[AlignedPair]):
+    G, L, k = set(), set(), 0
+    for p in alignment:
+        g_sp = p.guru is not None and p.guru.text.isspace()
+        l_sp = p.learner is not None and p.learner.text.isspace()
+        if g_sp:
+            G.add(k)
+        if l_sp:
+            L.add(k)
+        if p.guru is not None and not g_sp:
+            k += 1
+    inside = lambda s: {x for x in s if 0 < x < k}
+    return inside(G), inside(L)
 
-    if guru_joined != learner_joined:
-        pass
 
-    if len(guru_texts) != len(learner_texts):
-        diff = len(learner_texts) - len(guru_texts)
-        if diff < 0:
-            r.boundary_errors.append({
-                "note": f"Learner produced {abs(diff)} fewer word-groups than the guru "
-                        f"({r.learner_word_count} vs {r.guru_word_count}) -- likely ran two or "
-                        f"more words together without a pause (guru: {' | '.join(guru_texts)}; "
-                        f"learner: {' | '.join(learner_texts)})."
-            })
+def _match(G, L):
+    free = sorted(L)
+    matched, missed = 0, []
+    for g in sorted(G):
+        cands = [l for l in free if abs(l - g) <= TOLERANCE]
+        if cands:
+            free.remove(min(cands, key=lambda l: abs(l - g)))
+            matched += 1
         else:
-            r.boundary_errors.append({
-                "note": f"Learner produced {diff} extra word-groups compared to the guru "
-                        f"({r.learner_word_count} vs {r.guru_word_count}) -- likely paused "
-                        f"mid-word (guru: {' | '.join(guru_texts)}; learner: {' | '.join(learner_texts)})."
-            })
-    else:
-        mismatched = [i for i, (g, l) in enumerate(zip(guru_texts, learner_texts)) if g != l]
-        for i in mismatched:
-            if abs(len(guru_texts[i]) - len(learner_texts[i])) >= 2:
-                r.boundary_errors.append({
-                    "note": f"Word #{i+1} boundary looks shifted -- guru said '{guru_texts[i]}', "
-                            f"learner said '{learner_texts[i]}'."
-                })
+            missed.append(g)
+    return matched, missed, free
 
-    denom = max(r.guru_word_count, 1)
-    r.score = max(0.0, round(100.0 * (1 - len(r.boundary_errors) / denom), 1))
+
+def evaluate(guru_aksharas: List[Akshara], learner_aksharas: List[Akshara],
+             alignment: Optional[List[AlignedPair]] = None) -> Rubric3Result:
+    guru_words = [_word_text(w) for w in to_words(guru_aksharas)]
+    learner_words = [_word_text(w) for w in to_words(learner_aksharas)]
+    r = Rubric3Result(guru_word_count=len(guru_words), learner_word_count=len(learner_words))
+
+    if not learner_words:
+        r.boundary_errors.append({"note": "No words were recognised in the learner's recording."})
+        r.error_units, r.score = max(len(guru_words), 1), 0.0
+        return r
+
+    if alignment is None:   # backward compatible: align on the fly
+        from ..alignment.align import align_aksharas
+        alignment = align_aksharas(guru_aksharas, learner_aksharas)
+
+    G, L = _boundaries(alignment)
+    matched, missed, extra = _match(G, L)
+    Gs = sorted(G)
+
+    for g in missed:
+        i = Gs.index(g)
+        if i + 1 < len(guru_words):
+            r.boundary_errors.append({
+                "type": "merged",
+                "note": f"'{guru_words[i]}' and '{guru_words[i + 1]}' were run together without a pause."})
+    for e in extra:
+        wi = min(sum(1 for g in Gs if g < e), len(guru_words) - 1)
+        r.boundary_errors.append({
+            "type": "split",
+            "note": f"A pause was inserted inside the word '{guru_words[wi]}'."})
+
+    r.error_units = len(missed) + len(extra)
+    total = len(G) + len(L)
+    r.score = 100.0 if total == 0 else round(100.0 * 2 * matched / total, 1)
     return r

@@ -1,16 +1,16 @@
-# Core (no internet / model download required)
+# Core
 PyYAML>=6.0
 
-# Optional ASR backend (needs one-time internet access to download model weights,
-# and needs ffmpeg on PATH to decode the dataset's .weba/.mp3 audio -- see README)
+# Optional local ASR backend (needs ffmpeg and a one-time model download)
 # openai-whisper>=20231117
 
-# Optional: Roman <-> Devanagari/Telugu transliteration helper (only needed if
-# you want to cross-check the *_roman.txt files against the *_unicode.txt files)
-# indic-transliteration>=2.3.0
+# Romanised -> Devanagari/Telugu fallback
+indic-transliteration>=2.3.0
 
 # Testing
 pytest>=7.0
+
+# Web app
 flask
 openai
 python-dotenv

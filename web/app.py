@@ -4,16 +4,12 @@ web/app.py
 ----------
 Flask backend for Uchcharana Pariksha.
 
-Features
---------
 * Single fixed admin login (ADMIN_USERNAME / ADMIN_PASSWORD env vars).
-  Every page, audio file and API endpoint is blocked until logged in.
-* Guru audios + reference texts are stored INSIDE the project
-  (audios_for_pronunciation_test/audios_teachers + data/reference_texts) and
-  exposed through a dropdown -- nothing about the guru is uploaded by the user.
-* The learner's audio is recorded live in the browser and POSTed to
-  /api/evaluate together with the selected item id; the response is the same
-  report JSON the original version returned.
+* Guru audios + reference texts are stored inside the project and exposed
+  through a dropdown.
+* Learner audio is recorded live in the browser and POSTed to /api/evaluate.
+* Silent / empty / too-short recordings are rejected before scoring.
+* Technical errors are logged server-side; users only see friendly messages.
 """
 from __future__ import annotations
 
@@ -30,6 +26,7 @@ import mimetypes
 import subprocess
 import traceback
 import tempfile
+from array import array
 from datetime import timedelta
 
 from flask import (Flask, request, jsonify, send_from_directory, session,
@@ -78,9 +75,6 @@ if "ADMIN_PASSWORD" not in os.environ:
     print("[SECURITY WARNING] ADMIN_PASSWORD is not set -- using the insecure default. "
           "Set ADMIN_USERNAME / ADMIN_PASSWORD (and SECRET_KEY) in .env or Vercel env vars.")
 
-# Stateless signed-cookie sessions work on serverless too, as long as every
-# instance uses the SAME secret -- so derive one from the credentials if
-# SECRET_KEY isn't given explicitly.
 app.secret_key = os.environ.get("SECRET_KEY") or hashlib.sha256(
     f"uchcharana|{ADMIN_USERNAME}|{ADMIN_PASSWORD}".encode()).hexdigest()
 app.config.update(
@@ -128,6 +122,13 @@ def require_login():
     return redirect("/login")
 
 
+@app.after_request
+def _no_cache_static(resp):
+    if request.path == "/" or request.path.endswith((".css", ".js", ".html")):
+        resp.headers["Cache-Control"] = "no-cache, must-revalidate"
+    return resp
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error = None
@@ -141,7 +142,7 @@ def login():
             session["is_admin"] = True
             session.permanent = True
             return redirect("/")
-        time.sleep(0.7)  # slow down password guessing
+        time.sleep(0.7)
         error = "Invalid username or password."
     elif session.get("is_admin"):
         return redirect("/")
@@ -163,13 +164,11 @@ def _item_sort_key(item_id: str):
 
 
 def _teacher_audio_filename(item_id: str, meta: dict):
-    # 1) any audio filename listed in metadata.json for this item
     for v in meta.values():
         if isinstance(v, str) and v.lower().endswith((".mp3", ".wav", ".m4a", ".ogg")):
             fn = os.path.basename(v)
             if os.path.isfile(os.path.join(TEACHER_DIR, fn)):
                 return fn
-    # 2) naming convention: shlokamN -> sanskrit_shlokaN.mp3, padyamN -> telugu_padyamN.mp3
     m = re.match(r"(shlokam|padyam)(\d+)$", item_id)
     if m:
         prefix = "sanskrit_shloka" if m.group(1) == "shlokam" else "telugu_padyam"
@@ -224,13 +223,19 @@ def guru_audio(item_id):
 
 
 # --------------------------------------------------------------------------
-# ASR backend (unchanged)
+# ASR backend (Groq-hosted Whisper)
 # --------------------------------------------------------------------------
 _whisper_asr = None
 _FFMPEG = shutil.which("ffmpeg")
 if not _FFMPEG:
-    print("[warning] ffmpeg not found on PATH -- recordings will be served as-is for "
-          "browser playback (fine for Chrome/Firefox; Safari may not play .webm).")
+    print("[warning] ffmpeg not found on PATH -- server-side silence check and "
+          "playback transcoding are disabled (browser-side checks still apply).")
+
+# Generic script hint (NOT the answer key) -- keeps Whisper in the right script.
+_SCRIPT_HINT = {
+    "sa": "ॐ नमः शिवाय। गुरुभ्यो नमः। हरिः ॐ तत्सत्।",
+    "te": "ఓం నమః శివాయ। గురుభ్యో నమః। శ్రీ గణేశాయ నమః।",
+}
 
 
 class _GroqWhisperWrapper:
@@ -240,28 +245,59 @@ class _GroqWhisperWrapper:
         api_key = os.environ.get("GROQ_API_KEY", "").strip().strip('"').strip("'")
         if not api_key:
             raise RuntimeError("GROQ_API_KEY environment variable is missing.")
-        self.client = OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1", timeout=45.0)
+        self.model = os.environ.get("GROQ_MODEL", "whisper-large-v3")
+        self.client = OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1", timeout=60.0)
 
     def transcribe(self, audio_path: str, lang: str = "sa", **kwargs):
         ext = os.path.splitext(audio_path)[1].lower()
         filename = "audio.webm" if ext in (".weba", "") else f"audio{ext}"
+        hint = _SCRIPT_HINT.get(lang, "")
         with open(audio_path, "rb") as f:
             res = self.client.audio.transcriptions.create(
-                model="whisper-large-v3-turbo",
+                model=self.model,
                 file=(filename, f),
                 language=lang,
                 response_format="verbose_json",
+                temperature=0.0,
+                prompt=hint or None,
+                timestamp_granularities=["word", "segment"],
             )
         data = res if isinstance(res, dict) else res.model_dump()
+        segments = data.get("segments") or []
+
+        def _bad(s):  # Whisper's own "this is not speech" signature
+            return (s.get("no_speech_prob") or 0) > 0.6 and (s.get("avg_logprob") or 0) < -1.0
+
+        good = [s for s in segments if not _bad(s)]
+        text = (" ".join((s.get("text") or "").strip() for s in good).strip()
+                if segments else (data.get("text") or "").strip())
+
+        # Whisper sometimes "transcribes" silence by echoing its prompt
+        n_text, n_hint = "".join(text.split()), "".join(hint.split())
+        if n_text and n_hint and n_text in n_hint:
+            text = ""
+
+        def _in_good(w):
+            t = w.get("start") or 0
+            return (not segments) or any(s["start"] - 0.1 <= t <= s["end"] + 0.1 for s in good)
+
+        words = [w for w in (data.get("words") or []) if _in_good(w)] if text else []
+        pool = good or segments
+        avg_lp = (sum(s.get("avg_logprob") or 0 for s in pool) / len(pool)) if pool else None
+        no_sp = (sum(s.get("no_speech_prob") or 0 for s in pool) / len(pool)) if pool else None
+        low_conf = bool((avg_lp is not None and avg_lp < -1.0) or (no_sp is not None and no_sp > 0.6))
+
         return ASRResult(
-            text=data.get("text", "").strip(),
-            duration=data.get("duration", 0.0),
-            words=data.get("words") or [],
-            avg_logprob=0.0,
-            no_speech_prob=0.0,
-            prompt_echo_suspected=False,
-            diagnostics={"backend": "groq_whisper", "language": data.get("language", lang),
-                         "segments": data.get("segments", [])},
+            text=text,
+            duration=data.get("duration") or 0.0,
+            words=words,
+            avg_logprob=avg_lp,
+            no_speech_prob=no_sp,
+            prompt_echo_suspected=low_conf,
+            diagnostics={"backend": "groq_whisper", "model": self.model,
+                         "language": data.get("language", lang), "low_confidence": low_conf,
+                         "num_segments": len(segments), "kept_segments": len(good),
+                         "word_timestamps_available": bool(words)},
         )
 
 
@@ -283,6 +319,39 @@ def _make_browser_wav(src_path: str):
     except Exception as e:
         print(f"[warning] ffmpeg transcoding failed for {src_path}: {e}")
         return None
+
+
+def _audio_problem(path: str):
+    """Return a user-facing message if the recording is empty/silent/too short.
+    Needs ffmpeg; silently skipped where it's missing (browser check covers it)."""
+    if not _FFMPEG:
+        return None
+    try:
+        raw = subprocess.run(
+            [_FFMPEG, "-v", "quiet", "-i", path, "-ac", "1", "-ar", "16000", "-f", "s16le", "-"],
+            capture_output=True, timeout=60, check=True).stdout
+    except Exception:
+        return None
+    a = array("h")
+    a.frombytes(raw[: len(raw) // 2 * 2])
+    n = len(a)
+    duration = n / 16000.0
+    if duration < 1.5:
+        return f"The recording is only {duration:.1f}s long -- please record the full recitation."
+    frame, active, frames, peak = 320, 0, 0, 0
+    thr = (0.01 * 32768) ** 2
+    for i in range(0, n - frame + 1, frame):
+        seg = a[i:i + frame]
+        energy = sum(v * v for v in seg) / frame
+        peak = max(peak, max(abs(v) for v in seg))
+        frames += 1
+        if energy > thr:
+            active += 1
+    if peak < 0.02 * 32768:
+        return "The recording is silent -- the microphone captured no sound. Check your mic and try again."
+    if frames and active / frames < 0.08:
+        return "Almost no speech was detected in the recording. Speak closer to the microphone and try again."
+    return None
 
 
 # --------------------------------------------------------------------------
@@ -343,6 +412,10 @@ def api_evaluate():
         if os.path.getsize(learner_path) == 0:
             return jsonify({"error": "The recording is empty. Please record again."}), 400
 
+        problem = _audio_problem(learner_path)
+        if problem:
+            return jsonify({"error": problem}), 400
+
         learner_playback_path = _make_browser_wav(learner_path)
         learner_audio_url = (
             f"/uploads/{session_id}/{os.path.basename(learner_playback_path)}"
@@ -368,6 +441,10 @@ def api_evaluate():
             "used_transliteration_fallback": report["used_transliteration_fallback"],
             "asr_flagged": report["asr_flagged"],
             "asr_flag_reason": report["asr_flag_reason"],
+            "score_valid": report["score_valid"],
+            "quality_warnings": report["quality_warnings"],
+            "reliability": report["reliability"],
+            "practice_points": report["practice_points"],
             "timing_available": report["timing_available"],
             "timed_errors": report["timed_errors"],
             "rubric1": {"score": report["rubric1"]["score"], "feedback": report["rubric1"]["feedback"]},
@@ -384,9 +461,14 @@ def api_evaluate():
         return jsonify({"error": str(e)}), 400
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 400
+    except ImportError as e:
+        traceback.print_exc()
+        return jsonify({"error": "A required server component is missing. Please contact the administrator.",
+                        "detail": str(e)}), 500
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Something went wrong while evaluating the recording. Please try again.",
+                        "detail": str(e)}), 500
 
 
 CONTENT_TYPES = {

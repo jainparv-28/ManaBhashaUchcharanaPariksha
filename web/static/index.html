@@ -1,106 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uchcharana Pariksha -- Pronunciation Check</title>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
-  <header>
-    <div class="head-row">
-      <div>
-        <h1>उच्चारण परीक्षा <span class="subtitle">Pronunciation Check</span></h1>
-        <p class="tagline">Choose a shloka / padyam, listen to the guru, record the learner live, and see exactly where the pronunciation went wrong.</p>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">ॐ</span>
+        <div>
+          <div class="brand-title">उच्चारण परीक्षा</div>
+          <div class="brand-sub">Pronunciation Check</div>
+        </div>
       </div>
-      <form method="post" action="/logout" class="logout-form">
-        <button type="submit" class="btn ghost">Log out</button>
-      </form>
+      <div class="topbar-actions">
+        <button type="button" id="theme-btn" class="icon-btn" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
+        <form method="post" action="/logout" class="logout-form">
+          <button type="submit" class="btn ghost">Log out</button>
+        </form>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="panel" id="input-panel">
-      <h2>1. Select, listen &amp; record</h2>
-      <form id="eval-form">
-        <label for="item_select">Select the shloka / padyam</label>
+  <main class="container">
+    <ol class="steps" id="steps" aria-label="Progress">
+      <li data-step="1" class="active"><span class="dot">1</span><span class="lbl">Select</span></li>
+      <li data-step="2"><span class="dot">2</span><span class="lbl">Record</span></li>
+      <li data-step="3"><span class="dot">3</span><span class="lbl">Evaluate</span></li>
+      <li data-step="4"><span class="dot">4</span><span class="lbl">Results</span></li>
+    </ol>
+
+    <!-- STEP 1 -->
+    <section class="card" id="select-card">
+      <div class="card-head">
+        <h2><span class="num">1</span> Choose a verse</h2>
+        <p class="muted">Pick the shloka / padyam, listen to the guru and read the text before you record.</p>
+      </div>
+      <label class="field-label" for="item_select">Shloka / Padyam</label>
+      <div class="select-wrap">
         <select id="item_select" name="item_id">
           <option value="">-- Select --</option>
         </select>
+      </div>
 
-        <div id="item-detail" hidden>
-          <label>Guru's audio</label>
+      <div id="item-detail" class="detail-grid" hidden>
+        <div class="sub-card">
+          <div class="sub-title">🎧 Guru's audio</div>
           <audio id="guru-select-audio" controls preload="none"></audio>
-          <label>Reference text</label>
+          <p class="muted small" id="no-audio-note" hidden>No guru audio is stored for this item.</p>
+        </div>
+        <div class="sub-card wide">
+          <div class="sub-title">
+            📖 Reference text
+            <span id="lang-badge" class="badge"></span>
+          </div>
           <div id="ref-text" class="ref-text"></div>
         </div>
-
-        <label>Learner's live recording</label>
-        <div class="rec-row">
-          <button type="button" id="rec-btn" class="btn rec" disabled>● Record</button>
-          <button type="button" id="play-btn" class="btn" disabled>▶ Play</button>
-          <button type="button" id="stop-btn" class="btn" disabled>■ Stop</button>
-          <span id="rec-timer" class="rec-timer">00:00</span>
-        </div>
-        <audio id="rec-audio" hidden></audio>
-        <div class="hint">Select an item first. Press Record, recite, then Stop. Use Play to check the recording, or Re-record to try again.</div>
-
-        <button type="submit" id="submit-btn" disabled>Evaluate pronunciation</button>
-      </form>
-      <div id="status" class="status" hidden></div>
+      </div>
     </section>
 
-    <section class="panel" id="results-panel" hidden>
-      <h2>2. Results</h2>
+    <!-- STEP 2 + 3 -->
+    <section class="card" id="record-card">
+      <div class="card-head">
+        <h2><span class="num">2</span> Record the learner</h2>
+        <p class="muted">Press the microphone, recite the full verse, then press stop. Play it back to check before evaluating.</p>
+      </div>
 
-      <div id="flags"></div>
+      <form id="eval-form">
+        <div class="recorder">
+          <button type="button" id="rec-btn" class="rec-btn" disabled aria-label="Record">
+            <span class="rec-icon"></span>
+          </button>
+          <div class="rec-main">
+            <canvas id="meter" height="64"></canvas>
+            <div class="rec-meta">
+              <span id="rec-state" class="rec-state">Select a verse to begin</span>
+              <span id="rec-timer" class="rec-timer">00:00</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="score-row">
-        <div class="score-card overall">
-          <div class="score-num" id="score-overall">--</div>
-          <div class="score-label" id="grade-label">Overall</div>
+        <div class="rec-controls">
+          <button type="button" id="play-btn" class="btn" disabled>▶ Play</button>
+          <button type="button" id="stop-btn" class="btn" disabled>■ Stop</button>
+          <span class="muted small" id="rec-hint">Max 3 minutes. Find a quiet place and hold the mic close.</span>
         </div>
-        <div class="score-card">
-          <div class="score-num" id="score-r1">--</div>
-          <div class="score-label">Syllable (aspiration / sanyukta / dvitva)</div>
+        <audio id="rec-audio" hidden></audio>
+
+        <button type="submit" id="submit-btn" class="primary-btn" disabled>
+          <span class="btn-label">Evaluate pronunciation</span>
+        </button>
+      </form>
+      <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results-panel" hidden>
+      <div class="card summary-card">
+        <div class="card-head row-head">
+          <h2><span class="num">4</span> Results</h2>
+          <button type="button" id="again-btn" class="btn">↺ Record again</button>
         </div>
-        <div class="score-card">
-          <div class="score-num" id="score-r2">--</div>
-          <div class="score-label">Anunasika</div>
-        </div>
-        <div class="score-card">
-          <div class="score-num" id="score-r3">--</div>
-          <div class="score-label">Word splitting</div>
+
+        <div id="flags"></div>
+
+        <div class="summary-grid">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 120 120" class="ring" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+              <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="54"></circle>
+            </svg>
+            <div class="ring-center">
+              <div class="ring-num" id="score-overall">--</div>
+              <div class="ring-of">/ 100</div>
+            </div>
+            <div class="grade" id="grade-label">Overall</div>
+          </div>
+
+          <div class="rubrics">
+            <div class="rubric">
+              <div class="rubric-top"><span>Syllable pronunciation <em class="muted small">aspiration · sanyukta · dvitva · vowels</em></span><strong id="score-r1">--</strong></div>
+              <div class="bar"><i id="bar-r1"></i></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-top"><span>Anunasika <em class="muted small">nasalisation</em></span><strong id="score-r2">--</strong></div>
+              <div class="bar"><i id="bar-r2"></i></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-top"><span>Word splitting <em class="muted small">pada-cheda</em></span><strong id="score-r3">--</strong></div>
+              <div class="bar"><i id="bar-r3"></i></div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <h3>Learner's audio -- errors marked on the waveform</h3>
-      <div class="legend" id="legend"></div>
-      <div class="waveform-wrap">
-        <canvas id="learner-canvas" height="140"></canvas>
-        <div id="learner-tooltip" class="tooltip" hidden></div>
+      <div class="card">
+        <div class="card-head"><h3>🎯 What to practise</h3></div>
+        <div id="practice" class="practice-grid"></div>
       </div>
-      <audio id="learner-audio-el" controls></audio>
-      <p class="hint">Click anywhere on the waveform to seek. Colored bands mark where each error happens; hover for detail, click a band to jump &amp; play.</p>
 
-      <div id="guru-audio-section" hidden>
-        <h3>Guru's audio (reference)</h3>
-        <div class="waveform-wrap small">
-          <canvas id="guru-canvas" height="80"></canvas>
+      <div class="card">
+        <div class="card-head"><h3>📝 What was heard vs. the reference</h3></div>
+        <div class="compare-grid">
+          <div class="sub-card">
+            <div class="sub-title">Reference (guru)</div>
+            <div id="guru-text-out" class="compare-text"></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-title">Recognised from learner</div>
+            <div id="learner-text-out" class="compare-text"></div>
+          </div>
         </div>
-        <audio id="guru-audio-el" controls></audio>
       </div>
 
-      <h3>All errors (with timestamps)</h3>
-      <table id="error-table">
-        <thead>
-          <tr><th>Time</th><th>Type</th><th>Guru akshara</th><th>Learner akshara</th><th>Note</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="card">
+        <div class="card-head"><h3>〰️ Errors on the learner's recording</h3></div>
+        <div class="legend" id="legend"></div>
+        <div class="waveform-wrap">
+          <canvas id="learner-canvas" height="140"></canvas>
+          <div id="learner-tooltip" class="tooltip" hidden></div>
+        </div>
+        <audio id="learner-audio-el" controls></audio>
+        <p class="muted small">Click the waveform to seek. Coloured bands mark errors; hover for detail.</p>
+
+        <div id="guru-audio-section" hidden>
+          <div class="sub-title top-gap">Guru's audio (reference)</div>
+          <div class="waveform-wrap small">
+            <canvas id="guru-canvas" height="80"></canvas>
+          </div>
+          <audio id="guru-audio-el" controls></audio>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head row-head">
+          <h3>📋 All errors</h3>
+          <span class="muted small" id="err-count"></span>
+        </div>
+        <div class="chips" id="err-filters"></div>
+        <div class="table-wrap">
+          <table id="error-table">
+            <thead>
+              <tr><th>Time</th><th>Type</th><th>Guru</th><th>Learner</th><th>Note</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="/app.js"></script>
+  <div id="loading" class="loading" hidden>
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <div id="loading-msg" class="loading-msg">Uploading recording…</div>
+      <div class="muted small">This can take a few seconds.</div>
+    </div>
+  </div>
+  <div id="toasts" class="toasts" aria-live="assertive"></div>
+
+  <script src="/app.js?v=6"></script>
 </body>
 </html>
