@@ -7,7 +7,8 @@ Flask backend for Uchcharana Pariksha.
 * Single fixed admin login (ADMIN_USERNAME / ADMIN_PASSWORD env vars).
 * Guru audios + reference texts are stored inside the project and exposed
   through a dropdown.
-* Learner audio is recorded live in the browser and POSTed to /api/evaluate.
+* Learner audio is recorded live in the browser, OR picked from the sample
+  learner recordings shipped with the dataset (for testing the system).
 * Silent / empty / too-short recordings are rejected before scoring.
 * Technical errors are logged server-side; users only see friendly messages.
 """
@@ -60,7 +61,9 @@ _candidate_dirs = [
     "/var/task/web/static",
 ]
 REF_DIR = os.path.join(REPO_ROOT, "data", "reference_texts")
-TEACHER_DIR = os.path.join(REPO_ROOT, "audios_for_pronunciation_test", "audios_teachers")
+AUDIO_ROOT = os.path.join(REPO_ROOT, "audios_for_pronunciation_test")
+TEACHER_DIR = os.path.join(AUDIO_ROOT, "audios_teachers")
+LEARNER_ROOT = os.path.join(AUDIO_ROOT, "audios_learners")
 UPLOAD_ROOT = os.path.join(tempfile.gettempdir(), "uploads")
 os.makedirs(UPLOAD_ROOT, exist_ok=True)
 
@@ -156,8 +159,11 @@ def logout():
 
 
 # --------------------------------------------------------------------------
-# Guru items (reference text + internally stored audio)
+# Guru items (reference text + internally stored audio) and sample learners
 # --------------------------------------------------------------------------
+_AUDIO_EXTS = (".weba", ".webm", ".mp3", ".wav", ".m4a", ".ogg")
+
+
 def _item_sort_key(item_id: str):
     m = re.match(r"([a-z]+)(\d+)$", item_id)
     return (0 if item_id.startswith("shlok") else 1, int(m.group(2)) if m else 0, item_id)
@@ -178,9 +184,28 @@ def _teacher_audio_filename(item_id: str, meta: dict):
     return None
 
 
-def _load_items() -> dict:
+def _sample_dir(meta: dict):
+    d = os.path.basename(str(meta.get("learner_dir") or ""))
+    path = os.path.join(LEARNER_ROOT, d) if d else None
+    return path if path and os.path.isdir(path) else None
+
+
+def _sample_files(meta: dict):
+    """Sorted list of sample learner recording filenames for an item."""
+    path = _sample_dir(meta)
+    if not path:
+        return []
+    return sorted(f for f in os.listdir(path)
+                  if not f.startswith(".") and f.lower().endswith(_AUDIO_EXTS))
+
+
+def _load_metadata() -> dict:
     with open(os.path.join(REF_DIR, "metadata.json"), "r", encoding="utf-8") as f:
-        metadata = json.load(f)
+        return json.load(f)
+
+
+def _load_items() -> dict:
+    metadata = _load_metadata()
     items = {}
     for item_id in sorted(metadata.keys(), key=_item_sort_key):
         meta = metadata[item_id]
@@ -202,6 +227,7 @@ def _load_items() -> dict:
             "text": text,
             "audio_file": audio_fn,
             "audio_url": f"/guru-audio/{item_id}" if audio_fn else None,
+            "sample_count": len(_sample_files(meta)),
         }
     return items
 
@@ -211,6 +237,29 @@ def api_items():
     items = _load_items()
     public = [{k: v for k, v in it.items() if k != "audio_file"} for it in items.values()]
     return jsonify({"items": public})
+
+
+@app.route("/api/samples/<item_id>")
+def api_samples(item_id):
+    meta = _load_metadata().get(item_id)
+    if not meta:
+        return jsonify({"samples": []})
+    files = _sample_files(meta)
+    return jsonify({"samples": [
+        {"index": i, "name": f"Sample {i + 1}", "url": f"/sample-audio/{item_id}/{i}"}
+        for i in range(len(files))
+    ]})
+
+
+@app.route("/sample-audio/<item_id>/<int:index>")
+def sample_audio(item_id, index):
+    meta = _load_metadata().get(item_id)
+    files = _sample_files(meta) if meta else []
+    if not meta or index < 0 or index >= len(files):
+        return "Not Found", 404
+    fn = files[index]
+    mimetype = mimetypes.guess_type(fn)[0] or "audio/webm"
+    return send_from_directory(_sample_dir(meta), fn, mimetype=mimetype, conditional=True)
 
 
 @app.route("/guru-audio/<item_id>")
@@ -231,7 +280,6 @@ if not _FFMPEG:
     print("[warning] ffmpeg not found on PATH -- server-side silence check and "
           "playback transcoding are disabled (browser-side checks still apply).")
 
-# Generic script hint (NOT the answer key) -- keeps Whisper in the right script.
 _SCRIPT_HINT = {
     "sa": "ॐ नमः शिवाय। गुरुभ्यो नमः। हरिः ॐ तत्सत्।",
     "te": "ఓం నమః శివాయ। గురుభ్యో నమః। శ్రీ గణేశాయ నమః।",
@@ -265,14 +313,13 @@ class _GroqWhisperWrapper:
         data = res if isinstance(res, dict) else res.model_dump()
         segments = data.get("segments") or []
 
-        def _bad(s):  # Whisper's own "this is not speech" signature
+        def _bad(s):
             return (s.get("no_speech_prob") or 0) > 0.6 and (s.get("avg_logprob") or 0) < -1.0
 
         good = [s for s in segments if not _bad(s)]
         text = (" ".join((s.get("text") or "").strip() for s in good).strip()
                 if segments else (data.get("text") or "").strip())
 
-        # Whisper sometimes "transcribes" silence by echoing its prompt
         n_text, n_hint = "".join(text.split()), "".join(hint.split())
         if n_text and n_hint and n_text in n_hint:
             text = ""
@@ -322,8 +369,7 @@ def _make_browser_wav(src_path: str):
 
 
 def _audio_problem(path: str):
-    """Return a user-facing message if the recording is empty/silent/too short.
-    Needs ffmpeg; silently skipped where it's missing (browser check covers it)."""
+    """User-facing message if the recording is empty/silent/too short (needs ffmpeg)."""
     if not _FFMPEG:
         return None
     try:

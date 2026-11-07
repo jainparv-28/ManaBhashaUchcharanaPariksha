@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.py": {
-      "includeFiles": "{web/**,src/**,config.yaml,data/reference_texts/**,audios_for_pronunciation_test/audios_teachers/**}"
+      "includeFiles": "{web/**,src/**,config.yaml,data/reference_texts/**,audios_for_pronunciation_test/audios_teachers/**,audios_for_pronunciation_test/audios_learners/**}"
     }
   },
   "routes": [

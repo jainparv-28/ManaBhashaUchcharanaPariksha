@@ -216,3 +216,11 @@ table#error-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
   .card { padding: 18px 16px; }
   .brand-sub { display: none; }
 }
+
+/* ---------- sample learner recordings ---------- */
+.sample-box { background: var(--card2); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 14px; }
+.sample-box .sub-title { margin-bottom: 8px; }
+.sample-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.sample-row select { flex: 1; min-width: 200px; background: var(--card); color: var(--text); border: 1px solid var(--border);
+                     border-radius: 10px; padding: 10px 12px; font-size: .95rem; font-family: inherit; cursor: pointer; }
+.sample-row select:disabled { opacity: .5; cursor: default; }

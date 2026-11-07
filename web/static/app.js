@@ -1,5 +1,6 @@
-/* app.js -- verse picker, live recorder with level meter, silence check,
-   evaluation with loading overlay, friendly error panel, and a rich results view. */
+/* app.js -- verse picker, live recorder OR sample learner recordings,
+   silence check, evaluation with loading overlay, friendly error panel,
+   and a rich results view. */
 
 const ERROR_COLORS = {
   aspiration_error: "#e63946", anunasika_error: "#f4a261", dvitva_error: "#9c6ade",
@@ -22,11 +23,13 @@ const guruSelectAudio = $("guru-select-audio"), refTextEl = $("ref-text");
 const recBtn = $("rec-btn"), playBtn = $("play-btn"), stopBtn = $("stop-btn");
 const recTimerEl = $("rec-timer"), recStateEl = $("rec-state"), recAudio = $("rec-audio");
 const meter = $("meter");
+const sampleBox = $("sample-box"), sampleSelect = $("sample_select"), sampleNote = $("sample-note");
 
 let items = {}, mediaRecorder = null, recStream = null, recChunks = [], recordedBlob = null;
 let recording = false, busy = false, timerId = null, recStartedAt = 0;
 let meterCtx = null, analyser = null, meterRAF = null, loadingTimer = null;
 let activeFilters = new Set(), lastErrors = [], lastLearnerAudio = null;
+let usingSample = false, sampleToken = 0;
 
 /* ---------------- theme ---------------- */
 (function initTheme() {
@@ -105,9 +108,13 @@ function updateButtons() {
   playBtn.disabled = !recordedBlob || recording || playing || busy;
   stopBtn.disabled = !(recording || playing);
   submitBtn.disabled = !hasItem || !recordedBlob || recording || busy;
+  sampleSelect.disabled = recording || busy;
 
   if (recording) { recStateEl.textContent = "● Recording… press the button to stop"; recStateEl.className = "rec-state live"; }
-  else if (recordedBlob) { recStateEl.textContent = "Recording ready — play it back or evaluate"; recStateEl.className = "rec-state"; }
+  else if (recordedBlob) {
+    recStateEl.textContent = usingSample ? "Sample loaded — play it or evaluate" : "Recording ready — play it back or evaluate";
+    recStateEl.className = "rec-state";
+  }
   else if (hasItem) { recStateEl.textContent = "Press the microphone to start"; recStateEl.className = "rec-state"; }
   else { recStateEl.textContent = "Select a verse to begin"; recStateEl.className = "rec-state"; }
 
@@ -142,6 +149,7 @@ itemSelect.addEventListener("change", () => {
   const it = items[itemSelect.value];
   if (!it) {
     itemDetail.hidden = true;
+    sampleBox.hidden = true;
     guruSelectAudio.removeAttribute("src"); guruSelectAudio.load();
     updateButtons();
     return;
@@ -156,6 +164,53 @@ itemSelect.addEventListener("change", () => {
   } else {
     guruSelectAudio.hidden = true; $("no-audio-note").hidden = false;
     guruSelectAudio.removeAttribute("src");
+  }
+  loadSamples(it.id);
+  updateButtons();
+});
+
+/* ---------------- sample learner recordings ---------------- */
+async function loadSamples(itemId) {
+  sampleSelect.innerHTML = `<option value="">-- Choose a sample --</option>`;
+  sampleNote.textContent = "";
+  sampleBox.hidden = true;
+  try {
+    const res = await fetch("/api/samples/" + encodeURIComponent(itemId));
+    if (!res.ok) return;
+    const data = await res.json();
+    if (itemSelect.value !== itemId || !data.samples || !data.samples.length) return;
+    for (const s of data.samples) {
+      const opt = document.createElement("option");
+      opt.value = s.url; opt.textContent = s.name;
+      sampleSelect.appendChild(opt);
+    }
+    sampleNote.textContent = `${data.samples.length} real learner recordings available`;
+    sampleBox.hidden = false;
+  } catch (e) { /* samples are optional */ }
+}
+
+sampleSelect.addEventListener("change", async () => {
+  const url = sampleSelect.value;
+  if (!url) { clearRecording(); return; }
+  const name = sampleSelect.options[sampleSelect.selectedIndex].textContent;
+  clearRecording(true);
+  statusEl.hidden = true;
+  const token = ++sampleToken;
+  sampleNote.textContent = "Loading " + name + "…";
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Could not load the sample (" + res.status + ")");
+    const blob = await res.blob();
+    if (token !== sampleToken) return;          // user picked something else meanwhile
+    recordedBlob = blob.type ? blob : new Blob([blob], { type: "audio/webm" });
+    usingSample = true;
+    recAudio.src = URL.createObjectURL(recordedBlob);
+    recTimerEl.textContent = "00:00";
+    sampleNote.textContent = name + " loaded";
+    toast(name + " loaded — press Evaluate", "ok", 2500);
+  } catch (err) {
+    sampleNote.textContent = "";
+    showStatus("error", err.message);
   }
   updateButtons();
 });
@@ -217,15 +272,21 @@ function startTimer() {
 }
 function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
 
-function clearRecording() {
+/* keepSample=true is used when a sample is about to be loaded */
+function clearRecording(keepSample = false) {
+  sampleToken++;
   if (mediaRecorder && mediaRecorder.state !== "inactive") {
     mediaRecorder.onstop = null;
     try { mediaRecorder.stop(); } catch (e) {}
   }
   releaseStream(); stopTimer(); stopMeter();
-  recording = false; recChunks = []; recordedBlob = null;
+  recording = false; recChunks = []; recordedBlob = null; usingSample = false;
   recAudio.pause(); recAudio.removeAttribute("src"); recAudio.load();
   recTimerEl.textContent = "00:00";
+  if (!keepSample) {
+    sampleSelect.value = "";
+    if (sampleSelect.options.length > 1) sampleNote.textContent = `${sampleSelect.options.length - 1} real learner recordings available`;
+  }
   updateButtons();
 }
 
@@ -254,6 +315,7 @@ async function startRecording() {
   mediaRecorder.onstop = () => {
     const type = mediaRecorder.mimeType || mime || "audio/webm";
     recordedBlob = new Blob(recChunks, { type });
+    usingSample = false;
     recAudio.src = URL.createObjectURL(recordedBlob);
     releaseStream(); stopTimer(); stopMeter();
     recording = false;
